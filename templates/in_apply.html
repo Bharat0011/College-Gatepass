@@ -1,0 +1,78 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/stu_in1.css' %}">
+	<link rel="shortcut icon" type="image/jpg" href="{% static 'icons/gp2.png' %}">
+
+	<title>IN Request</title>
+	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<div id="mySidenav" class="sidenav">
+	  		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  		<a href="stu_home" >Student<br>Reports</a>
+	 		<a href="in_apply" id="sp-1">In<br>Request</a>
+	  		<a href="out_apply" >Out<br>Request</a>
+	  		<div class="thin-line"></div>
+			  {%if user.is_authenticated %}
+			  <a href="my_profile">Hello<br>{{user.first_name}}</a>
+			  <a href="logout">LogOut</a>
+			  {%else%}
+			  <a href="#">Hello<br>---</a>
+			  <a href="logout">LogOut</a>
+			  {%endif%}
+		</div>
+		<div class="top-nav-bar">					<!--------------TOP NAVIGATION BAR----------------->
+			<span class="top-nav-bar-burger"  onclick="openNav()">&#9776;</span>
+			<h1>KJCOEMR GATE PASS</h1>
+			<nav>
+				<ul class="top-nav-bar-ul">
+					{%if user.is_authenticated %}
+					<li><a href="my_profile">Hello {{user.first_name}}</a></li>
+					<li><a href="logout">LOGOUT</a></li>
+					{%else%}
+                    <li><a href="#">Hello<br>---</a></li>
+                    <li><a href="logout">LogOut</a></li>
+                    {%endif%}
+				</ul>
+			</nav>
+		</div>
+		<div class="side-nav-bar">					<!--------------SIDE NAVIGATION BAR----------------->
+			<li><a href="stu_home">Student<br>Reports</a></li>
+			<li id="stu-ani-2"><a href="in_apply">In<br>Request</a></li>
+			<li><a href="out_apply">Out<br>Request</a></li>
+		</div>
+	</header>
+	<section class="request-main">						<!---------------REQUEST LOGIC----------------------->
+		<h1 class="stu-apps-heading">IN<br>REQUEST</h1>
+		
+			{%block content%}
+			{%for  message in messages %}
+			<div class="alert-warning">
+			<h3 style="color:red;">{{message}}</h3>
+			</div>
+			{%endfor%}
+			{%endblock%}  
+		
+
+		<form action="" method="post">{%csrf_token%}
+		<textarea  class="tex" placeholder="Type your reason..." name="reason_des"></textarea>
+		<br>
+		<input type="submit" name="Submit" class="btn" value="Apply">
+		</form>
+	</section>
+	<!----------------------------------------------------------- JAVASCRIPT ------------------------------>
+	<script>											
+		function openNav() {
+  			document.getElementById("mySidenav").style.width = "250px";
+		}
+
+		function closeNav() {
+  			document.getElementById("mySidenav").style.width = "0";
+		}
+	</script>
+</body>
+</html>

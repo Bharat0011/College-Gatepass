@@ -1,0 +1,148 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/principal_count.css' %}">
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'icons/gp2.png' %}">
+    <title>Frequent Students</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="principal_stud_data" >Student<br>Applications</a>
+            <a href="principal_home" >Student<br> Data</a>
+            <a href="stu_report"  >Student<br>Reports</a>
+            <a href="frequent_app" id="sp-1">Frequent<br>Application</a>
+            <div class="thin-line"></div>
+
+            {%if user.is_authenticated %}
+            <a href="#">Hello<br>{{user.first_name}}</a>
+            <a href="logout">LogOut</a>
+            {%else%}
+            <a href="#">Hello<br>---</a>
+            <a href="logout">LogOut</a>
+            {%endif%}
+        
+        </div>
+        <div class="top-nav-bar">                   <!--------------TOP NAVIGATION BAR----------------->
+            <span class="top-nav-bar-burger"  onclick="openNav()">&#9776;</span>
+            <h1>KJCOEMR GATE PASS</h1>
+            <nav>
+                <ul class="top-nav-bar-ul">
+
+
+                    {%if user.is_authenticated %}
+                    <li><a href="#">Hello<br>{{user.first_name}}</a></li>
+                    <li><a href="logout">LogOut</a></li>
+                    {%else%}
+                    <li><a href="#">Hello<br>---</a></li>
+                    <li><a href="logout">LogOut</a></li>
+                    {%endif%}               
+                
+                </ul>
+
+
+            </nav>
+        </div>
+        <div class="side-nav-bar">                  <!--------------SIDE NAVIGATION BAR----------------->
+            <li><a href="principal_stud_data">Student Applications</a></li>
+            <li ><a href="principal_home">Student <br> Data</a></li>
+            <li ><a href="stu_report">Student Reports</a></li>
+            <li id="stu-ani-2"><a href="frequent_app" >Frequent<br>Application</a></li>
+        </div>
+    </header>
+
+
+    <section class="validate-gfm">
+    </section>
+
+
+<section id="tab">
+<div class="container">
+
+
+<br>
+<br>
+<br>
+
+            <div style="overflow-x: auto;">
+
+                {%if d|length %}
+            <table>
+               <!--  <tr>
+                    <td id="hd" colspan="7"><h1>Student Verification</h1></td>
+                </tr> -->
+                <tr>
+                    <th>Name</th>
+                    <th>Email id</th>
+                    <th>Mobile Number</th>
+                    <th>Branch</th>
+                    <th>Year</th>
+                    <th>Request Count</th>
+                </tr>
+                {%for i in d%}
+                <tr>
+                    <td>{{i.1}} {{i.2}}</td>
+                    <td>{{i.3}}</td>
+                    <td>{{i.4}}</td>
+                    {%if i.5 == 'computer' %}
+                    <td><h4 class="comp">Computer</h4></td>
+                    {%elif i.5 == 'civil' %}
+                    <td><h4 class="civil">Civil</h4></td>
+                    {%elif i.5 == 'mechanical' %}
+                    <td><h4 class="mech">Mechanical</h4></td>
+                    {%elif i.5 == 'electrical' %}
+                    <td><h4 class="elec">Electrical</h4></td>
+                    {%elif i.5 == 'electronic' %}
+                    <td><h4 class="electro">Electronics</h4></td>
+                    {%elif i.5 == 'FE' %}
+                    <td><h4 class="fe">FE</h4></td>
+                    {%endif%}
+                    <td>{{i.6}}</td>
+                    {%if i.7 > 3 %}
+                    <td><h4 class="col1">{{i.7}}</h4></td>
+                    {%else%}
+                    <td>{{i.7}}</td>
+                    {%endif%}
+                </tr>
+                {%endfor%}
+            </table>
+            {%else%}
+
+        <section id="Warning">
+            <div class="container">
+        <div class="alert-warning">     <!---Alert Message--->
+            {%block content%}
+                {%for  message in messages %}
+                <h2>{{message}}</h2>
+                <br>
+                {%endfor%}
+                {%endblock%}  
+                   
+            <strong>Warning!</strong> No records found.
+                </div>
+            </div>
+            </section>
+            {%endif%}
+        </div>
+        </div>
+
+</section>
+
+
+
+    <!----------------------------------------------------------- JAVASCRIPT ------------------------------>
+<script>                                            
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+</body>
+</html>

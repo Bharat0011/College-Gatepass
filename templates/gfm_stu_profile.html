@@ -1,0 +1,218 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'icons/gp2.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/table_search.css' %}">
+    <title>Student Profile</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="gfm_grant_permission" >Student<br>Applications</a>
+            <a href="gfm_validate_stu" >Validate<br>Student</a>
+            <a href="gfm_rejected_stu" >Rejected Student <br>List</a>
+            <a href="gfm_stu_report">Student<br>Report</a>
+            <a href="gfm_stu_profile" id="sp-1">Student<br>Profile</a>
+            <div class="thin-line"></div>
+            {%if user.is_authenticated %}
+            <a href="#">Hello<br>{{user.first_name}}</a>
+            <a href="logout">LogOut</a>
+            {%else%}
+            <a href="#">Hello<br>---</a>
+            <a href="logout">LogOut</a>
+            {%endif%}
+        </div>
+        <div class="top-nav-bar">                   <!--------------TOP NAVIGATION BAR----------------->
+            <span class="top-nav-bar-burger"  onclick="openNav()">&#9776;</span>
+            <h1>KJCOEMR GATE PASS</h1>
+            <nav>
+                <ul class="top-nav-bar-ul">
+                    {%if user.is_authenticated %}
+                    <li><a href="#">Hello {{user.first_name}}</a></li>
+                    <li><a href="logout">LogOut</a></li>
+                    {%else%}
+                    <li><a href="#">Hello<br>---</a></li>
+                    <li><a href="logout">LogOut</a></li>
+                    {%endif%}
+                </ul>
+            </nav>
+        </div>
+        <div class="side-nav-bar">                  <!--------------SIDE NAVIGATION BAR----------------->
+            <li><a href="gfm_grant_permission" >Student<br>Applications</a></li>
+            <li><a href="gfm_validate_stu" >Validate<br>Student</a></li>
+            <li><a href="gfm_rejected_stu" >Rejected Student <br>List</a></li>
+            <li><a href="gfm_stu_report" >Student<br>Report</a></li>
+            <li id="stu-ani-2"><a href="gfm_stu_profile" >Student<br>Profile</a></li>
+        </div>
+    </header>
+    <section class="validate-gfm">
+    </section>
+
+<br>
+<br>
+<br>
+
+
+<section id="tab">
+<div class="container">
+
+            <table>
+                <tr>
+                    <td id="hd" colspan="7" style="background-color: rgb(58, 228, 228)"><h1>Students Profile</h1></td>
+                </tr>
+            </table>
+       
+<section id="srch">
+    <!-- <div class="container"> -->
+<input type="text" id="myInput2" onkeyup="myFunction2()" placeholder="Search for BE students names.." title="Type in a name">
+<!-- </div> -->
+</section>
+
+            <div style="overflow-x: auto;">
+                {%if be|length %}
+            <table id="myTable2">
+                <!-- <tr>
+                    <td id="hd" colspan="7"style="background-color: #3f681c"><h1>BE Students</h1></td>
+                </tr> -->
+                <tr>
+                    <th>Sr.no</th>
+                    <th>Name</th>
+                    <th>Roll no</th>
+                    <th>View Profile</th>
+                </tr>
+                {%for i in be%}
+                <tr>
+                    <td>{{i.0}}</td>
+                    <td>{{i.1}} {{i.2}}</td>
+                    <td>{{i.3}}</td>
+                    <td>
+                        <form method="POST">{%csrf_token%}                    
+                        <button type="submit" name="Submit" value="{{i.4}}" >Edit Profile</button>
+                    </form>
+                    </td>
+                </tr>
+                {%endfor%}
+            </table>
+            {%else%}
+
+            <section id="Warning">
+                <!-- <div class="container">  -->
+            <div class="alert-warning">    
+                        <strong></strong>No records found. 
+                    </div>
+                <!-- </div> -->
+                </section>
+
+                {%endif%}
+
+            </table>
+        </div>
+        </div>
+
+</section>
+<br>
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+
+
+<script>
+function myFunction1() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput1");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable1");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script> -->
+
+
+
+
+<script>
+function myFunction2() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput2");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable2");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+    <!----------------------------------------------------------- JAVASCRIPT ------------------------------>
+<script>                                            
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+</body>
+</html>

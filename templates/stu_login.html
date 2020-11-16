@@ -1,0 +1,87 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" type="image/jpg" href="{% static 'icons/gp2.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stu_log.css' %}">
+	<title>Student Login</title>
+	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<div id="mySidenav" class="sidenav">
+	  		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  		<a href="index"  >Home</a>
+	 		<a href="about_us" >About</a>
+	  		<a href="#" >Contact</a>
+		</div>
+		<div class="top-nav-bar">					<!--------------TOP NAVIGATION BAR----------------->
+			<span class="top-nav-bar-burger"  onclick="openNav()">&#9776;</span>
+			<h1>KJCOEMR GATE PASS</h1>
+			<nav>
+				<ul class="top-nav-bar-ul">
+					<li><a href="index">HOME</a></li>
+					<li><a href="about_us">ABOUT</a></li>
+					<li><a href="#">CONTACT</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<section id="log">
+		<div class="container">
+			<h1>Student Login</h1>
+		</div>
+	</section>
+
+	<div>
+		{%block content%}
+		{%for  message in messages %}
+		<div class="alert-warning">  
+			<h2>{{message}}</h2>
+			<!-- <strong>Wrong username or password!</strong> -->
+  </div>
+		
+		{%endfor%}
+		{%endblock%}
+</div>
+
+	
+	<section id="textbox">
+		<form action="" method="POST">{%csrf_token%}
+			<div class="container">
+				<i class="fa fa-user"></i>
+				<input type="text" placeholder="Username" name="username" value="" required="">
+			</div>
+			<div class="container">
+				<i class="fa fa-lock"></i>
+				<input type="password" placeholder="Password" name="password" value="" required="">
+			</div>
+	</section>
+	<section id="btn">
+		<div class="container">
+			<input class="bt" type="submit" name="" value="Log in">
+		</div>
+		</form>
+	</section>
+	<section id="msg">
+		<div class="container">
+			<p>Not Registered ? <a href="signup_form">Sign Up</a></p>
+		</div>
+	</section>
+	<section id="forgot">
+		<div class="container">
+			<a href="forget_pass1"> <p>Forgot Password ?</p></a>
+		</div>
+	</section>
+		<!----------------------------------------------------------- JAVASCRIPT ------------------------------>
+	<script>											
+		function openNav() {
+  		document.getElementById("mySidenav").style.width = "250px";
+		}
+
+		function closeNav() {
+  		document.getElementById("mySidenav").style.width = "0";
+		}
+	</script>
+</body>

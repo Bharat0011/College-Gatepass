@@ -1,0 +1,149 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'icons/gp2.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tab1.css' %}">
+    <title>Validate GFM</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="hod_accept" >Student<br>Applications</a>
+            <a href="hod_validate_gfm" >Validate<br>GFM</a>
+            <a href="hod_stu_report" id="sp-1" >Student<br>Reports</a>
+            <a href="hod_rejected_stu_application">Student<br>Rejected<br>Applications</a>
+            <div class="thin-line"></div>
+            {%if user.is_authenticated %}
+            <a href="#">Hello<br>{{user.first_name}}</a>
+            <a href="logout">LogOut</a>
+            {%else%}
+            <a href="#">Hello<br>---</a>
+            <a href="logout">LogOut</a>
+            {%endif%}
+        </div>
+        <div class="top-nav-bar">                   <!--------------TOP NAVIGATION BAR----------------->
+            <span class="top-nav-bar-burger"  onclick="openNav()">&#9776;</span>
+            <h1>KJCOEMR GATE PASS</h1>
+            <nav>
+                <ul class="top-nav-bar-ul">
+                    {%if user.is_authenticated %}
+                    <li><a href="#">Hello {{user.first_name}}</a></li>
+                    <li><a href="logout">LogOut</a></li>
+                    {%else%}
+                    <li><a href="#">Hello<br>---</a></li>
+                    <li><a href="logout">LogOut</a></li>
+                    {%endif%}
+                </ul>
+            </nav>
+        </div>
+        <div class="side-nav-bar">                  <!--------------SIDE NAVIGATION BAR----------------->
+            <li><a href="hod_accept">Student Applications</a></li>
+            <li ><a href="hod_validate_gfm">Validate <br> GFM</a></li>
+            <li id="stu-ani-2"><a href="hod_stu_report">Student Reports</a></li>
+            <li><a href="hod_rejected_stu_application">Student<br>Rejected<br>Applications</a></li>
+        </div>
+    </header>
+    <section class="validate-gfm">
+    </section>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<form class="stu-report-date"  method="POST">{%csrf_token%}
+			<h3>FROM : </h3><input type="date"  name="date_from">
+			<h3>TO : </h3><input type="date" name="date_to">
+			<h3 ><input type="submit" name="Submit" class="btn"></h3>
+</form>
+<section id="tab">
+<div class="container">
+
+   
+            <div style="overflow-x: auto;">
+
+        {%if data|length %}
+
+            <table>
+               <!--  <tr>
+                    <td id="hd" colspan="7"><h1>Student Verification</h1></td>
+                </tr> -->
+                <tr>
+                    <th>Sr.no</th>
+                    <th>Name</th>
+                    <th>Mobile Number</th>
+                    <th>Email id</th>
+                    <th>Reason</th>
+                    <th>Request Accepted By</th>
+                    <th>Request Date</th>
+                    <th>Status</th>
+                </tr>
+
+        {%for i in data%}
+                <tr>
+                    <td>{{i.0}}</td>
+                    <td>{{i.8}} {{i.9}}</td>
+                    <td>{{i.2}}</td>
+                    <td>{{i.3}}</td>
+                    <td>{{i.4}}</td>
+                    <td>{{i.5}}</td>
+                    <td>{{i.6}}</td>
+                    <td>{{i.7}}</td>
+                </tr>
+        {%endfor%}
+            </table>
+        {%else%}
+
+        <section id="Warning">
+            <div class="container">
+        <div class="alert-warning">     <!---Alert Message--->
+            {%block content%}
+                {%for  message in messages %}
+                <h2>{{message}}</h2>
+                <br>
+                {%endfor%}
+                {%endblock%}  
+                   
+            <strong>Warning!</strong> No records found.
+                </div>
+            </div>
+            </section>
+            {%endif%}
+
+           
+
+        </div>
+        </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!----------------------------------------------------------- JAVASCRIPT ------------------------------>
+<script>                                            
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+</body>
+</html>

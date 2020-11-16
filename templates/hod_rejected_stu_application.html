@@ -1,0 +1,109 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/hod_accept.css' %}">
+	<link rel="shortcut icon" type="image/jpg" href="{% static 'icons/gp2.png' %}">
+	<title>Student Rejected Applications</title>
+	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<div id="mySidenav" class="sidenav">
+	  		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  		<a href="hod_accept">Student<br>Applications</a>
+	 		<a href="hod_validate_gfm" >Validate<br>GFM</a>
+            <a href="hod_stu_report" >Student<br>Reports</a>
+            <a href="hod_rejected_stu_application" id="sp-1">Student<br>Rejected<br>Applications</a>  
+			  <div class="thin-line"></div>
+			  
+			  {%if user.is_authenticated %}
+			  <a href="#">Hello<br>{{user.first_name}}</a>
+			  <a href="logout">LogOut</a>
+			  {%else%}
+			  <a href="#">Hello<br>---</a>
+			  <a href="logout">LogOut</a>
+			  {%endif%}
+		
+			</div>
+		<div class="top-nav-bar">					<!--------------TOP NAVIGATION BAR----------------->
+			<span class="top-nav-bar-burger"  onclick="openNav()">&#9776;</span>
+			<h1>KJCOEMR GATE PASS</h1>
+			<nav>
+				<ul class="top-nav-bar-ul">
+					{%if user.is_authenticated %}
+                    <li><a href="#">Hello {{user.first_name}}</a></li>
+                    <li><a href="logout">LogOut</a></li>
+                    {%else%}
+                    <li><a href="#">Hello<br>---</a></li>
+                    <li><a href="logout">LogOut</a></li>
+                    {%endif%}
+				</ul>
+			</nav>
+		</div>
+		<div class="side-nav-bar">					<!--------------SIDE NAVIGATION BAR----------------->
+			<li ><a href="hod_accept">Student Applications</a></li>
+			<li><a href="hod_validate_gfm">Validate <br> GFM</a></li>
+            <li><a href="hod_stu_report">Student Reports</a></li>
+            <li id="stu-ani-1"><a href="hod_rejected_stu_application" id="sp-1">Student<br>Rejected<br>Applications</a></li>
+		</div>
+	</header>
+	<section class="student-app-main">				<!------------- MAIN STUDENT INFO ------------------> 
+		<h1 class="stu-apps-heading">Student<br>Applications</h1>
+
+		{%if data|length %}
+		{% for dat in data %}
+		<div class="student-app-main-info">
+			<div class="time-date">
+				<h2>Apply Time : {{dat.5}}</h2>
+			</div>
+			<div class="img-per">
+				<div class="img">
+					<img src="{{dat.8}}" alt="" style="width:250px;height:250px;">
+				</div>
+				<div class="personal-info">
+					<h3>Name : {{dat.6}} {{dat.7}}</h3>
+                    <h3>Email : {{dat.1}}</h3>
+                    <h3>Request Type : {{dat.2}}</h3>
+                    <h3>Mobile No. : {{dat.3}}</h3>
+				</div>				
+			</div>
+			<div class="rea">
+                <h2>REASON</h2>
+            	<p>{{dat.4}}</p>
+            </div>
+            <form action="" method="post">{%csrf_token%}
+                <label>
+                    <input type="radio" name="verify" value="accept">
+                    <span class="accept">ACCEPT</span>
+                </label>
+                <label>
+                    <input type="radio" name="verify" value="reject">
+                    <span class="reject">REJECT</span>
+                </label>
+                <button type="submit" name="Submit" value="{{dat.0}}:{{dat.2}}">Confirm</button>
+            </form>
+		</div>
+		{%endfor%}
+		
+		{%else%}
+
+		<div class="alert-warning">  
+			<strong>Warning!</strong> No records found.
+	  	</div>
+		{%endif%}
+	</section>
+
+	<!----------------------------------------------------------- JAVASCRIPT ------------------------------>
+<script>											
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+</body>
+</html>

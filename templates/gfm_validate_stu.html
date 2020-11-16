@@ -1,0 +1,141 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tab.css' %}">
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'icons/gp2.png' %}">
+    <title>Validate Student</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="gfm_grant_permission" >Student<br>Applications</a>
+            <a href="gfm_validate_stu" id="sp-1">Validate<br>Student</a>
+            <a href="gfm_rejected_stu" >Rejected Student <br>List</a>
+            <a href="gfm_stu_report">Student<br>Report</a>
+            <a href="gfm_stu_profile">Student<br>Profile</a>
+            <div class="thin-line"></div>
+            {%if user.is_authenticated %}
+            <a href="#">Hello<br>{{user.first_name}}</a>
+            <a href="logout">LogOut</a>
+            {%else%}
+            <a href="#">Hello<br>---</a>
+            <a href="logout">LogOut</a>
+            {%endif%}
+        </div>
+        <div class="top-nav-bar">                   <!--------------TOP NAVIGATION BAR----------------->
+            <span class="top-nav-bar-burger"  onclick="openNav()">&#9776;</span>
+            <h1>KJCOEMR GATE PASS</h1>
+            <nav>
+                <ul class="top-nav-bar-ul">
+                    {%if user.is_authenticated %}
+                    <li><a href="#">Hello {{user.first_name}}</a></li>
+                    <li><a href="logout">LogOut</a></li>
+                    {%else%}
+                    <li><a href="#">Hello<br>---</a></li>
+                    <li><a href="logout">LogOut</a></li>
+                    {%endif%}
+                </ul>
+            </nav>
+        </div>
+        <div class="side-nav-bar">                  <!--------------SIDE NAVIGATION BAR----------------->
+            <li><a href="gfm_grant_permission">Student Applications</a></li>
+            <li id="stu-ani-2"><a href="gfm_validate_stu">Validate <br> Student</a></li>
+            <li><a href="gfm_rejected_stu">Rejected Student List</a></li>
+            <li><a href="gfm_stu_report">Student<br>Report</a></li>
+            <li><a href="gfm_stu_profile">Student<br>Profile</a></li>
+        </div>
+    </header>
+    <section class="validate-gfm">
+    </section>
+
+
+
+<section id="tab">
+<div class="container">
+
+    {%if data|length %}
+    <br>
+    <br>
+
+            <div style="overflow-x: auto;">
+            <table>
+
+               <!--  <tr>
+                    <td id="hd" colspan="7"><h1>Student Verification</h1></td>
+                </tr> -->
+                <tr>
+                    <th>Sr.no</th>
+                    <th>Name</th>
+                    <th>Mobile Number</th>
+                    <th>Year</th>
+                    <th>Roll no</th>
+                    <th>GFM Name</th>
+                    <th>Approve</th>
+                </tr>
+            {%for i in data%}
+                <tr>
+                    <td>{{i.0}}</td>
+                    <td>{{i.1}} {{i.2}}</td>
+                    <td>{{i.3}}</td>
+                    <td>{{i.4}}</td>
+                    <td>{{i.5}}</td>
+                    <td>{{i.6}}</td>
+
+                    <td>
+                        <form action="" method="post">{% csrf_token %}
+                        <label>
+                            <input type="radio" name="verify" value="accept">
+                            <span class="accept">ACCEPT</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="verify" value="reject">
+                            <span class="reject">REJECT</span>
+                        </label>
+                    <button type="submit" name="Submit" value="{{i.7}}">Confirm</button>
+                    </form></td>
+                </tr>
+            {%endfor%}
+            </table>
+
+        {% else %}
+        <section id="Warning">
+            <div class="container">
+        <div class="alert-warning">     <!---Alert Message--->
+                    <strong>Warning!</strong> No records found.
+                </div>
+            </div>
+        </section>
+        {%endif%} 
+        </div>
+        </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!----------------------------------------------------------- JAVASCRIPT ------------------------------>
+<script>                                            
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+</body>
+</html>

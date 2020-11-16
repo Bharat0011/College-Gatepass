@@ -1,0 +1,63 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'icons/gp2.png' %}">
+    <!--<meta name="display" content="KJCOEMR GATE PASS"> -->
+
+    <title>GFM Display</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/3but.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+            <a href="index"><h1>KJCOEMR GATE PASS</h1></a>
+            </div>
+            <nav>
+                <ul>
+                        {%if user.is_authenticated %}
+									
+                        <li><a href="gfm_home">Hello {{user.first_name}}</a></li>
+                        <!-- <li><a href="forget_pass1">ChangePassowrd</a></li> -->
+                        <!-- <li><a href="#">Profile</a></li> -->
+                        <li><a href="logout">LOGOUT</a></li>
+                            {% else %}
+                            <li><a href="#">HOME</a></li>
+                            <li><a href="about_us">ABOUT</a></li>
+                            <li><a href="#">CONTACT</a></li>
+                            {%endif%}
+                </ul>
+            </nav>      
+        </div>
+    </header>
+
+
+<section id="btns">
+    <div class="container">
+        <div style="text-align: center; margin-top: 60px">
+      <a href="gfm_validate_stu"><button type="submit" name="Submit" value="">Validate Students</button></a>
+      <a href="gfm_grant_permission"><button type="submit" name="Submit" value="">Students Applications</button></a>
+        <a href="gfm_rejected_stu"><button type="submit" name="Submit" value="">Rejected Student List</button></a>
+    </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+    
+<!--<footer>
+<p>KJCOEMR GATE PASS,Copyright &copy;2019</p>
+</footer>-->
+</body>
+</html>

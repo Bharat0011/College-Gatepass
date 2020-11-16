@@ -1,0 +1,247 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stu_signup.css' %}">
+    <title>Student-Sign Up</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'icons/gp2.png' %}">
+</head>
+<body>
+    <header>
+		<div id="mySidenav" class="sidenav">
+	  		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  		<a href="index">Home</a>
+	 		<a href="about_us">About</a>
+	  		<a href="#" >Contact</a>
+		</div>
+		<div class="top-nav-bar">					<!--------------TOP NAVIGATION BAR----------------->
+			<span class="top-nav-bar-burger"  onclick="openNav()">&#9776;</span>
+			<h1>KJCOEMR GATE PASS</h1>
+			<nav>
+				<ul class="top-nav-bar-ul">
+					<li><a href="index">HOME</a></li>
+					<li><a href="about_us">ABOUT</a></li>
+					<li><a href="#">CONTACT</a></li>
+				</ul>
+			</nav>
+		</div>
+    </header>
+    <section id="log">
+		<div class="container">
+			<h1>Student Sign Up</h1>
+		</div>
+    </section>
+    <section class="fom">
+        <form class="form" action="" method="POST" enctype="multipart/form-data">{%csrf_token%}
+            <div class="input-group">
+                <input type="text" placeholder="Username" name="username"  value="" required="">
+            </div>
+            <div class="input-group">
+        
+                <input type="text" placeholder="First Name" name="first_name" value="" required="">
+            </div>
+            <div class="input-group">
+                
+                <input type="text" placeholder="Last Name" name="last_name" value="" required="">
+            </div>
+            <div class="container">
+                <h3>Gender</h3>
+                <input type="radio" id="M" name="gender" value="male">
+                <label for="M">Male</label>
+                <input type="radio" id="F" name="gender" value="female">
+                <label for="F">Female</label>
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Password" name="password1" value="" required="">
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Confirm Password" name="password2" value="" required="">
+                <!-- <p class="err">Password doesn't match.</p> -->
+            </div>
+            <div class="input-group">
+                {%block content%}
+                    {%for  message in messages %}
+                        <h4 style="color:red;">{{message}}</h4>
+                    {%endfor%}
+                {%endblock%}
+            </div>
+            <div class="input-group">
+                <h3>BirthDate</h3>
+                <input type="date" name="bday">
+            </div>
+            <div class="input-group">
+                <input type="email" placeholder="Email-ID" name="email" value="" required="">
+            </div>
+            <div class="input-group">
+                <input type="tel" placeholder="Mobile No." name="mobile_no" value="" required="">
+            </div>
+            <div class="select-group">
+                <select required="" name="year">
+                    <option value="--- Select Year ---">--- Select Year ---</option >
+                    <option value="FE">FE</option >
+                    <option value="SE">SE</option>
+                    <option value="TE">TE</option>
+                    <option value="BE">BE</option>
+                </select>
+            </div>
+            <div class="select-group" >
+                <select required="" name="branch">
+                    <option value="--- Select Branch ---">--- Select Branch ---</option >
+                    <option value="FE">First Year/FE</option >
+                    <option value="computer">Computer</option >
+                    <option value="civil">Civil</option>
+                    <option value="mechanical">Mechanical</option>
+                    <option value="electrical">Electrical</option>
+                    <option value="electronic">Electronics</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="Roll No." name="roll_no" value="" required="" title="Enter your Roll No.">
+            </div>
+            <div class="input-group">
+                <input type="search" id="searchBox" placeholder="Search GFM name" title="Search Your GFM Name"> 
+            </div>
+            <div class="select-group">
+                <select required="" id="w1" name="gfm">
+                    <option>--- Select GFM ---</option >
+                    {% for dat in data%}
+                        <option value={{dat.2}}>{{dat.0}} {{dat.1}}</option >
+                    {%endfor%}
+                </select>
+            </div>
+            <div class="input-group">
+                <h3>Identity Card Photo</h3>
+                <input type="file" id="file1" placeholder="ID Photo" name="icard_img" value="" required="" title="Upload your I-Card Photo">
+            </div>
+            
+            <div style="display: none;" class="input-group">
+                <input type="text" id="b64-1" value="" name="b64-value1">
+            </div>
+
+            <div class="input-group">
+                <h3>Personal Photo</h3>
+                <input type="file" id="file2" placeholder="ID Photo" name="user_img" value="" required="" title="Upload your Photo">
+            </div>
+
+            <div style="display: none;" class="input-group">
+                <input type="text" id="b64-2" value="" name="b64-value2">
+            </div>
+
+            <div class="submit-btn">
+                <input class="bt" type="submit" name="" value="Sign Up">
+            </div>
+        </form>
+        
+        <div class="msg">
+			<p>Already Registered ? <a href="student_login">Log In</a></p>
+		</div>
+    </section>
+    <!----------------------------------------------------------- JAVASCRIPT ------------------------------>
+    <script src = 'https://code.jquery.com/jquery-3.4.1.min.js'></script>
+    <script>
+    function readFile() {
+  
+		if (this.files && this.files[0]) {
+		  
+		  var FR= new FileReader();
+		  
+		  FR.addEventListener("load", function(e) {
+			//document.getElementById("img").src       = e.target.result;
+			document.getElementById("b64-1").value = e.target.result;
+			alert(e.target.result);
+		  }); 
+		  
+		  FR.readAsDataURL( this.files[0] );
+		  
+		}
+		
+	  }
+	  
+	  document.getElementById("file1").addEventListener("change", readFile);
+      
+    </script>
+
+    <script>
+        function readFile() {
+      
+            if (this.files && this.files[0]) {
+              
+              var FR= new FileReader();
+              
+              FR.addEventListener("load", function(e) {
+                //document.getElementById("img").src       = e.target.result;
+                document.getElementById("b64-2").value = e.target.result;
+                alert(e.target.result);
+              }); 
+              
+              FR.readAsDataURL( this.files[0] );
+              
+            }
+            
+          }
+          
+          
+          document.getElementById("file2").addEventListener("change", readFile);
+        </script>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+    
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+
+        searchBox = document.querySelector("#searchBox");
+        countries = document.querySelector("#w1");
+        var when = "keyup"; //You can change this to keydown, keypress or change
+
+        searchBox.addEventListener("keyup", function (e) {
+            var text = e.target.value; 
+            var options = countries.options; 
+            for (var i = 0; i < options.length; i++) {
+                var option = options[i]; 
+                var optionText = option.text; 
+                var lowerOptionText = optionText.toLowerCase();
+                var lowerText = text.toLowerCase(); 
+                var regex = new RegExp("^" + text, "i");
+                var match = optionText.match(regex); 
+                var contains = lowerOptionText.indexOf(lowerText) != -1;
+                if (match || contains) {
+                    option.selected = true;
+                    return;
+                }
+                searchBox.selectedIndex = 0;
+            }
+        });
+
+
+        var uploadField = document.getElementById("file1");
+			uploadField.onchange = function(){
+    			if(this.files[0].size > 480000){
+        			alert("File to big!!");
+        			this.value="";
+    		};
+		};
+
+        var uploadField = document.getElementById("file2");
+            uploadField.onchange = function(){
+                if(this.files[0].size > 480000){
+                    alert("File to big!!");
+                    this.value="";
+            };
+        };
+
+
+        //$('input[type=file]').change(function () {
+          //  console.log(this.files[0].mozFullPath);
+        //});
+
+    </script>
+</body>
+</html>

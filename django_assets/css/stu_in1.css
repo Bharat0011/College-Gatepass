@@ -1,0 +1,521 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+/*---------------------------- TOP NAVIGATION BAR ---------------------------------*/
+.top-nav-bar{
+	height: 65px;
+	background-color: #144595;
+	font-family: 'Poppins', sans-serif;
+	color: white;
+	position: fixed;
+	width: 100%;
+	border-bottom: 2px solid red;
+	top: 0px;
+}
+.top-nav-bar h1{
+	float: left;
+	margin-left: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: 4px;
+	letter-spacing: 2px;
+	animation-name: fade;
+	animation-duration: 1s;
+}
+.top-nav-bar-ul{
+	float: right;
+	list-style-type: none;
+	margin-right: 20px;
+	margin-top:20px;
+	margin-bottom: 15px;
+	margin-left: 4px; 
+}
+.top-nav-bar-ul li{
+	display: inline-block;
+	margin-left: 5px;
+	margin-right: 5px;
+	letter-spacing: 2px;
+	padding: 2px 2px;
+	text-transform: uppercase;
+}
+.top-nav-bar-ul li h4{
+	font-weight: bold;
+	color: #ff4d4d;
+}
+.top-nav-bar-ul li a{
+	text-decoration: none;
+	color: white;
+	text-transform: uppercase;
+	padding-right: 6px;
+	padding-left: 6px;
+	animation-name: fade;
+	animation-duration: 1s;
+	transition: all 0.7s ease;
+}
+.top-nav-bar-ul li a:hover{
+	background-color: #ff4d4d;
+	color: #144595;
+	border-radius: 25px;
+	transition:all 0.5s ease-out;
+	font-weight: bold;
+}
+.top-nav-bar-burger{
+	display: none;
+}
+
+.sidenav{
+	display: none;
+}
+
+/*--------------------------- SIDE NAVIGATION BAR ---------------------------------*/
+.side-nav-bar{
+	top: 65px;
+	position: fixed;
+	background-color: #eaeae1;
+	width: 170px;
+	height: 100vh;
+}
+.side-nav-bar li{
+	list-style-type: none;
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	font-family: 'Poppins', sans-serif;
+	transition: all 1s ease;
+
+}
+.side-nav-bar li a{
+	text-decoration: none;
+	color: black;
+	font-size: 25px;
+	padding-right: 3px;
+	padding-left: 3px;
+	animation-name: faded;
+	animation-duration: 1s;
+}
+#stu-ani-1{
+	animation-name: slide;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+}
+#stu-ani-1 a{
+	color: transparent;
+	animation-name: fade;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+	animation-delay: 0.5s;
+}
+#stu-ani-2{
+	animation-name: slide;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+}
+#stu-ani-2 a{
+	color: transparent;
+	animation-name: fade;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+	animation-delay: 0.5s;
+}
+#stu-ani-3{
+	animation-name: slide;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+}
+#stu-ani-3 a{
+	color: transparent;
+	animation-name: fade;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+	animation-delay: 0.5s;
+}
+.side-nav-bar li:hover{
+	background-color: #C8C8C8;
+	transition:all 0.5s ease-out;
+	animation-name: pop;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+}
+@keyframes fade{
+	from{
+		opacity: 0;
+		color: transparent;
+	}
+	to{
+		opacity: 1;
+		color: white;
+	}
+}
+@keyframes faded{
+	from{
+		opacity: 0;
+		color: transparent;
+	}
+	to{
+		opacity: 1;
+		color: black;
+	}
+}
+@keyframes slide{
+	from{
+		background-color: #144595;
+		width: 0%;
+	}
+	to{
+		background-color: #144595;
+		width: 100%;
+	}
+}
+@keyframes pop{
+	from{
+		box-shadow: 0 4px 8px 0 rgba(0,0,0,0),0 6px 20px 0 rgba(0,0,0,0);
+	}
+	to{
+		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.66),0 6px 20px 0 rgba(0,0,0,0.66);
+	}
+}
+
+/*---------------------------------- MAIN STUDENTS APPLICATIONS ------------------------------------------------*/
+.request-main{
+	width:100%;
+	height:auto;
+	margin-top: 65px;
+	position: absolute;
+	z-index: -1;
+	font-family: 'Poppins', sans-serif;
+	padding-left: 170px;
+}
+.tex{
+	width: 70%;
+	height: 300px;
+	margin-top: 10%;
+	font-size: 30px;
+	padding-left: 1%;
+	padding-top: 1%;
+	padding-right:1%;
+	margin-left: 15%;
+	margin-right: 5%;
+	border-radius: 10px;
+	outline: none;
+	border:2px solid grey;
+}
+.tex:focus{
+	animation-name: wo;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+	transition: 0.5 ease;
+}
+@keyframes wo{
+	from{
+		border:3px solid transparent;
+	}
+	to{
+		border:3px solid #144595;
+	}
+}
+.stu-apps-heading{
+	display: none;
+}
+.btn{
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 16px;
+	border-radius: 25px;
+	font-weight: bold;
+	border-color: #144595;
+	letter-spacing: 1px;
+	color: white;
+	text-align: center;
+	margin-left: 45%;
+	margin-top: 3%;
+	background-color:#144595;
+	transition: 0.5s ease;
+}
+.btn:hover{
+	background-color:white;
+	color: #144595;
+	border: 2px solid #144595;
+	transition: 0.5s ease-out; 
+}
+.alert-warning{
+  padding: 20px;
+  background-color: #ff9800;
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+  border-radius: 25px;
+  animation-name: fade;
+  animation-duration: 2s;
+  margin-right: 5%;
+  margin-left: 5%;
+  font-size: x-large;
+}
+
+
+/*-------------------------------------------------- MEDIA QUERIES -----------------------------------------*/
+
+/*************************************************************************************************************/
+/*---------------------------------------          TABLET VIEW             ----------------------------------*/
+/*************************************************************************************************************/
+
+@media	(min-width: 481px) and (max-width: 1024px) {
+	.request-main{
+		padding-left: 0px;
+		margin-top: 0px;
+		left: 0px;
+		margin-right: 0px;
+		right:0px;
+	}
+	/*---------- TOP NAV BAR -------------*/
+	.top-nav-bar{
+		position: static;
+}
+	.top-nav-bar h1{
+		margin-left: 25%;
+		margin-right:5%;
+		font-size: xx-large;
+		margin-top: 8px;
+		color: white;
+		font-family: 'Poppins', sans-serif;
+		letter-spacing: 2px;
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+	.top-nav-bar-ul{
+		display: none;
+	}
+	.top-nav-bar-ul li{
+		display: none;
+	}
+	.top-nav-bar-ul li a{
+		display: none;
+	}
+	.top-nav-bar-ul li a:hover{
+		display: none;
+	}
+
+	/*----------------------- SIDE NAV BAR -------------------*/
+	.side-nav-bar{
+		display: none;
+	}
+	.side-nav-bar li{
+		display: none;
+	}
+	.side-nav-bar li a{
+		display: none;	
+	}
+
+	/*---------------------- SLIDE NAV BAR --------------------*/
+	.sidenav {
+		display: block;
+  		height: 100%;
+  		width: 0;
+  		position: fixed;
+  		z-index: 1;
+  		top: 0;
+  		left: 0;
+  		background-color: #111;
+  		overflow-x: hidden;
+  		transition: 0.5s;
+  		padding-top: 60px;
+	}
+
+	.sidenav a {
+  		padding: 8px 8px 8px 32px;
+  		text-decoration: none;
+  		font-size: 25px;
+  		color: #818181;
+  		display: block;
+  		transition: 0.3s;
+  		margin-top: 10px;
+  		font-family: 'Poppins', sans-serif;
+	}
+
+	.sidenav a:hover {
+  		color: #f1f1f1;
+	}
+
+	.sidenav .closebtn {
+  		position: absolute;
+  		top: 0;
+  		right: 25px;
+  		font-size: 36px;
+  		margin-left: 50px;
+	}
+	.top-nav-bar-burger{
+		position: absolute;
+		padding-top: 10px;
+		padding-left: 20px;
+		color: white;
+		font-size:30px;
+		cursor:pointer;
+		display: block;
+		animation-name: fade;
+		animation-duration: 1s;
+	}
+	.thin-line::after {
+		margin-top: 12px;
+    	content: "";
+    	background-image: linear-gradient(to right, #111,#818181,#111);
+    	height: 2px; /*for horizontal border; width for vertical*/
+   		display: block;
+	}
+	#sp-1{
+		color: #f1f1f1;
+	}
+	#sp-2{
+		color: #f1f1f1;
+	}
+	#sp-3{
+		color: #f1f1f1;	
+	}
+	.stu-apps-heading{
+		font-family: 'Poppins', sans-serif;
+		font-size: xx-large;
+		font-weight: bolder;
+		text-align: center;
+		margin-top: 15px;
+		margin-bottom: 5px;
+		letter-spacing: 2px;
+		display: block;
+	}
+}
+
+
+
+/*************************************************************************************************************/
+/*---------------------------------------          MOBILE VIEW             ----------------------------------*/
+/*************************************************************************************************************/
+
+@media (max-width: 480px){
+	.request-main{
+		padding-left: 0px;
+		margin-top: 0px;
+		left: 0px;
+		margin-right: 0px;
+		right:0px;
+	}
+	/*---------- TOP NAV BAR -------------*/
+	.top-nav-bar{
+		position: static;
+	}
+	.top-nav-bar h1{
+		font-size: x-large;
+		font-weight: bolder;
+		text-align: center;
+		margin-top: 4%;
+		margin-bottom: 5px;
+		letter-spacing: 1px;
+		margin-left: 20%;
+	}
+	.top-nav-bar-ul{
+		display: none;
+	}
+	.top-nav-bar-ul li{
+		display: none;
+	}
+	.top-nav-bar-ul li a{
+		display: none;
+	}
+	.top-nav-bar-ul li a:hover{
+		display: none;
+	}
+	/*----------------------- SIDE NAV BAR -------------------*/
+	.side-nav-bar{
+		display: none;
+	}
+	.side-nav-bar li{
+		display: none;
+	}
+	.side-nav-bar li a{
+		display: none;	
+	}
+	/*---------------------- SLIDE NAV BAR --------------------*/
+	.sidenav {
+		display: block;
+  		height: 100%;
+  		width: 0;
+  		position: fixed;
+  		z-index: 1;
+  		top: 0;
+  		left: 0;
+  		background-color: #111;
+  		overflow-x: hidden;
+  		transition: 0.5s;
+  		padding-top: 60px;
+	}
+
+	.sidenav a {
+  		padding: 8px 8px 8px 32px;
+  		text-decoration: none;
+  		font-size: 25px;
+  		color: #818181;
+  		display: block;
+  		transition: 0.3s;
+  		margin-top: 10px;
+  		font-family: 'Poppins', sans-serif;
+	}
+
+	.sidenav a:hover {
+  		color: #f1f1f1;
+	}
+
+	.sidenav .closebtn {
+  		position: absolute;
+  		top: 0;
+  		right: 25px;
+  		font-size: 36px;
+  		margin-left: 50px;
+	}
+	.top-nav-bar-burger{
+		position: absolute;
+		padding-top: 10px;
+		padding-left: 20px;
+		color: white;
+		font-size:30px;
+		cursor:pointer;
+		display: block;
+		animation-name: fade;
+		animation-duration: 1s;
+	}
+	.thin-line::after {
+		margin-top: 12px;
+    	content: "";
+    	background-image: linear-gradient(to right, #111,#818181,#111);
+    	height: 2px; /*for horizontal border; width for vertical*/
+   		display: block;
+	}
+	#sp-1{
+		color: #f1f1f1;
+	}
+	#sp-2{
+		color: #f1f1f1;
+	}
+	#sp-3{
+		color: #f1f1f1;	
+	}
+	.stu-apps-heading{
+		font-family: 'Poppins', sans-serif;
+		font-size: xx-large;
+		font-weight: bolder;
+		text-align: center;
+		margin-top: 15px;
+		margin-bottom: 5px;
+		letter-spacing: 2px;
+		display: block;
+	}
+	.btn{
+		margin-left: 38%;
+	}
+	.alert-warning{
+		font-size: large;
+	}
+
+}

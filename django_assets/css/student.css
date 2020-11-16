@@ -1,0 +1,160 @@
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+*{
+	margin: 0;
+	padding: 0;
+	/*transition: 0.4s ease;*/
+}
+
+body{
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 15px;
+	line-height:1.5;
+	margin: 0;
+	padding: 0;
+	transition: 0.6s ease;
+	background-color: #f4f4f4
+
+}
+/*GLOBAL*/
+.container{
+	width: 90%;
+	margin: auto;
+	/*overflow: hidden;*/
+
+}
+
+header ul{
+	margin: 0;
+	padding: 0;
+
+}
+h1{
+	cursor: pointer;
+	transition: 0.6s ease;
+
+}
+header{
+	background: #144595;
+	color: white;
+	padding-top: 30px;
+	min-height: 70px;
+	border-bottom: red 3px solid;
+}
+header a{
+	color: white;
+	text-decoration: none;
+	font-size: 16px;
+
+}
+
+header li{
+	float: left;
+	display: inline;
+	padding: 0 20px 0 20px;
+	transition: 0.6s ease;
+
+}
+
+header #branding{
+	float: left;
+}
+
+header #branding h1{
+	margin: 0;
+	text-align: center;
+	resize: unset;
+}
+header nav{
+	float: right;
+	margin-top: 10px;
+}
+header .highlight,header .current a{
+	color: red;
+	font-weight: bold;
+}
+
+header a:hover{
+	color: red;
+	font-weight: bold;
+		transition: 0.6s ease;
+}
+#hd{
+	pointer-events: none;
+}
+table{
+	width: 90%;
+	margin:auto;
+}
+table,th,td{
+	margin-top: 50px;
+	text-align: center;
+	border:1px solid red;
+	border-collapse: collapse;
+}
+th,td{
+	padding: 10px;
+}
+/*ooter{
+	padding: 20px;
+	margin-top: 200px;
+	color: white;
+	background-color: #00001a;
+	text-align: center;
+}*/
+/*body{
+	background-image:linear-gradient(27deg,pink 50%, red 50%);
+	height: 100vh;
+	background-size: cover;
+	background-position: center;*/
+
+#btns{
+	/*margin-top: 550px;*/
+}
+.clk{
+	margin-top: 50px;
+	color: black;
+	font-weight: bolder;
+	font-size:xx-large;
+}
+button{
+	margin: 50px 50px;
+	font-size: 20px;
+	 padding: 5px;
+	/* margin:50px;*/
+	 width: 240px;
+	 cursor: pointer;
+	 border-radius: 12px;
+	 height: 90px;
+	 background-color: red;
+	 color: white;
+	 border:3px solid transparent;
+
+}
+button:hover,button:active{
+	background-color:#f4f4f4;
+	border-color: red;
+	color: black;
+	transition: 0.6s ease;
+}
+@media(max-width: 768px){
+	header #branding,
+	header nav,
+	header nav li,
+	#btns,
+	#req{
+		float: none;
+		text-align: center;
+		width: 100%;
+	}
+	header{
+		padding-bottom: 20px;
+	}
+	button{
+		margin: 50px 10px;
+	}
+}
+
+
+
+
+

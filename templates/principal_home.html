@@ -1,0 +1,341 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/principal_final.css' %}">
+  <title>Student Data</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" type="image/jpg" href="{% static 'icons/gp2.png' %}">
+</head>
+<body>
+  <header>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="principal_stud_data" >Student<br>Applications</a>
+      <a href="principal_home" id="sp-1">Student<br>Data</a>
+        <a href="stu_report" >Student<br>Reports</a>
+        <a href="frequent_app" >Frequent<br>Application</a>
+        <div class="thin-line"></div>
+        {%if user.is_authenticated %}
+        <a href="#">Hello<br>{{user.first_name}}</a>
+        <a href="logout">LogOut</a>
+        {%else%}
+        <a href="#">Hello<br>---</a>
+        <a href="logout">LogOut</a>
+        {%endif%}
+    </div>
+    <div class="top-nav-bar">         <!--------------TOP NAVIGATION BAR----------------->
+      <span class="top-nav-bar-burger"  onclick="openNav()">&#9776;</span>
+      <h1>KJCOEMR GATE PASS</h1>
+      <nav>
+        <ul class="top-nav-bar-ul">
+          {%if user.is_authenticated %}
+                    <li><a href="#">Hello<br>{{user.first_name}}</a></li>
+                    <li><a href="logout">LogOut</a></li>
+                    {%else%}
+                    <li><a href="#">Hello<br>---</a></li>
+                    <li><a href="logout">LogOut</a></li>
+                    {%endif%}
+        </ul>
+      </nav>
+    </div>
+    <div class="side-nav-bar">          <!--------------SIDE NAVIGATION BAR----------------->
+      <li><a href="principal_stud_data">Student Applications</a></li>
+      <li id="stu-ani-2"><a href="principal_home">Student <br>Data</a></li>
+      <li><a href="stu_report">Student Reports</a></li>
+      <li><a href="frequent_app" >Frequent<br>Application</a></li>
+    </div>
+  </header>
+  <section class="validate-gfm">
+  </section>
+</body>
+  <!----------------------------------------------------------- JAVASCRIPT ------------------------------>
+<script>                      
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Dept', 'In', 'Out'],
+          ['FE', {{data.0}}, {{data.1}}],
+          ['Computer', {{data.2}}, {{data.3}}],
+          ['Civil', {{data.4}}, {{data.5}}],
+          ['Mechenical', {{data.6}}, {{data.7}}],
+          ['Electrical', {{data.8}}, {{data.9}}],
+          ['Electronics', {{data.10}}, {{data.11}}]
+        ]);
+
+        var options = {
+          title: 'Total Approved Applications Of Ongoing Semister',
+          curveType: 'function',
+          legend: { position: 'bottom' },
+          width: '100%',
+          height: '300px'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+
+    </script>
+
+
+<section id="showcase">
+<div class="container">
+  <div class="box">
+    <div id="curve_chart" style="height: 300px"></div>
+</div>
+</div>
+</section>
+
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'IN', 'OUT'],
+          ['FE', {{fe.0}}, {{fe.1}}]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'First Year Department',
+             width: '100%',
+          height: '300px'
+          },
+          bars: 'horizontal' ,// Required for Material Bar Charts.
+          hAxis:{
+            title:"Number of Approved Applications"
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+
+
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'IN', 'OUT'],
+          ['SE', {{comp.0}}, {{comp.1}}],
+          ['TE', {{comp.2}}, {{comp.3}}],
+          ['BE', {{comp.4}}, {{comp.5}}]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Computer Department',
+             width: '100%',
+          height: '300px'
+          },
+          bars: 'horizontal',// Required for Material Bar Charts.
+          hAxis:{
+            title:"Number of Approved Applications"
+          } 
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('barchart_material1'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'IN', 'OUT'],
+          ['SE', {{civil.0}}, {{civil.1}}],
+          ['TE', {{civil.2}}, {{civil.3}}],
+          ['BE', {{civil.4}}, {{civil.5}}]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Civil Department',
+             width: '100%',
+          height: '300px'
+          },
+          bars: 'horizontal',// Required for Material Bar Charts.
+          hAxis:{
+            title:"Number of Approved Applications"
+          } 
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('barchart_material2'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'IN', 'OUT'],
+          ['SE', {{mech.0}}, {{mech.1}}],
+          ['TE', {{mech.2}}, {{mech.3}}],
+          ['BE', {{mech.4}}, {{mech.5}}]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Mechenical Department',
+             width: '100%',
+          height: '300px'
+          },
+          bars: 'horizontal',// Required for Material Bar Charts.
+          hAxis:{
+            title:"Number of Approved Applications"
+          } 
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('barchart_material3'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'IN', 'OUT'],
+          ['SE', {{elc.0}}, {{elc.1}}],
+          ['TE', {{elc.2}}, {{elc.3}}],
+          ['BE', {{elc.4}}, {{elc.5}}]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Electrical Department',
+             width: '100%',
+          height: '300px'
+          },
+          bars: 'horizontal',// Required for Material Bar Charts.
+          hAxis:{
+            title:"Number of Approved Applications"
+          } 
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('barchart_material4'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'IN', 'OUT'],
+          ['SE', {{elctr.0}}, {{elctr.1}}],
+          ['TE', {{elctr.2}}, {{elctr.3}}],
+          ['BE', {{elctr.4}}, {{elctr.5}}]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Electronic Department',
+             width: '100%',
+          height: '300px'
+          },
+          bars: 'horizontal',// Required for Material Bar Charts.
+          hAxis:{
+            title:"Number of Approved Applications"
+          } 
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('barchart_material5'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+
+<section id="graphs">
+    <div class="container">
+    <div class="data">  
+    <div id="barchart_material" style="height: 500px"></div>
+</div>
+  <div class="data">
+        <div id="barchart_material1" style="height: 500px"></div>
+
+</div>
+<div class="data">
+        <div id="barchart_material2" style="height: 500px"></div>
+
+</div>
+<div class="data">
+        <div id="barchart_material3" style="height: 500px"></div>
+
+</div>
+<div class="data">
+  <div id="barchart_material4" style="height: 500px"></div>
+
+</div>
+<div class="data">
+  <div id="barchart_material5" style="height: 500px"></div>
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

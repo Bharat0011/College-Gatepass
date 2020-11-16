@@ -1,0 +1,228 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/security_final.css' %}">
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'icons/gp2.png' %}">
+    <title>Security OUT</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="security_in" >IN</a>
+            <a href="security_in" id="sp-1">OUT</a>
+            <div class="thin-line"></div>
+            {%if user.is_authenticated %}
+        <a href="#">Hello<br>{{user.first_name}}</a>
+        <a href="logout">LogOut</a>
+        {%else%}
+        <a href="#">Hello<br>---</a>
+        <a href="logout">LogOut</a>
+        {%endif%}
+        </div>
+        <div class="top-nav-bar">                   <!--------------TOP NAVIGATION BAR----------------->
+            <span class="top-nav-bar-burger"  onclick="openNav()">&#9776;</span>
+            <h1>KJCOEMR GATE PASS</h1>
+            <nav>
+                <ul class="top-nav-bar-ul">
+                    {%if user.is_authenticated %}
+                    <li><a href="#">Hello<br>{{user.first_name}}</a></li>
+                    <li><a href="logout">LogOut</a></li>
+                    {%else%}
+                    <li><a href="#">Hello<br>---</a></li>
+                    <li><a href="logout">LogOut</a></li>
+                    {%endif%}
+                </ul>
+            </nav>
+        </div>
+        <div class="side-nav-bar">                  <!--------------SIDE NAVIGATION BAR----------------->
+            <li ><a href="security_in">IN<br></a></li>
+            <li id="stu-ani-2"><a href="security_in">OUT</a></li>
+        </div>
+    </header>
+    <section class="validate-gfm">
+    </section>
+
+
+<section id="req">
+    <div class="container">
+        <div style="overflow-x: auto;">
+<br>
+<br>
+          {%if data|length %}
+        <table>
+            <tr>
+                <tr bgcolor="lightblue">
+                    <th>Sr.no</th>
+                    <th>ID Photo</th>
+                    <th>Personal Photo</th>
+                    <th>Name</th>
+                    <th>Time Of Approval</th>
+                    <th>Status</th>
+                    <th>Open Gate</th>
+                    </tr>
+          {%for i in data%}   
+                <tr>
+                    <td>{{i.0}}</td>
+                    <td><!-- Trigger the Modal -->
+<img class="myImg" id="image_{{i.0}}" src="{{i.5}}" alt="ID-Photo" style="width:50%;max-width:150px" onmouseover="pehla(this);">
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- The Close Button -->
+  <span class="close">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="img01">
+
+  <!-- Modal Caption (Image Text) -->
+  <div class="caption" id="caption"></div>
+</div></td>
+    <td>
+    <!-- Trigger the Modal -->
+<img class="myImg1" id="image1_{{i.0}}" src="{{i.4}}" alt="Personal-Photo" style="width:50%;max-width:150px" onmouseover="dusra(this);">
+
+<!-- The Modal -->
+<div id="myModal1" class="modal">
+
+  <!-- The Close Button -->
+  <span class="close1">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="id_img">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption1" class="caption1"></div>
+</div>
+    </td>
+                    <td>{{i.1}}</td>
+                    <td>{{i.2}}</td>
+                    {%if i.3 == 'accepted' %}
+                    <td><h4 class="col">Accepted</h4></td>
+                    <td>
+                      <form method="POST">{%csrf_token%}
+                            <button type="submit" name="Submit" value="{{i.1}}">OUT</button>
+                    </form>
+                    </td>
+                    {%elif i.3 == 'gfm_rejected' %}
+                    <td><h4 class="col1">Rejected</h4></td>
+                    <td>
+                      <!-- <form method="POST">{%csrf_token%}
+                            <button type="submit" name="Submit" value="">OUT</button>
+                    </form> -->
+                    </td>
+                    {%elif i.3 == 'hod_rejected' %}
+                    <td><h4 class="col1">Rejected</h4></td>
+                    <td>
+                      <!-- <form method="POST">{%csrf_token%}
+                            <button type="submit" name="Submit" value="">OUT</button>
+                    </form> -->
+                    </td>
+                    {%elif i.3 == 'hod_accepted' %}
+                    <td><h4 class="col">Accepted</h4></td>
+                    <td>
+                      <!-- <form method="POST">{%csrf_token%}
+                            <button type="submit" name="Submit" value="">OUT</button>
+                    </form> -->
+                    </td>
+                    {%else%}
+
+                    <td><h4 class="col1">Rejected</h4></td>
+                    <td>
+                      <!-- <form method="POST">{%csrf_token%}
+                            <button type="submit" name="Submit" value="">OUT</button>
+                    </form> -->
+                    </td>
+                    {%endif%}
+                </tr>  
+          {%endfor%}
+        </table>
+
+        {%else%}
+
+        <section id="Warning">
+          <div class="container">
+      <div class="alert-warning">     <!---Alert Message--->
+                  <strong>Warning!</strong> No records found.
+              </div>
+          </div>
+          </section>
+
+
+        {%endif%}
+
+
+    </div>
+    </div>
+</section>    
+<!--<footer>
+<p>KJCOEMR GATE PASS,Copyright &copy;2019</p>
+</footer>-->
+
+
+
+<script>
+  function pehla(obj){
+      var modal = document.getElementById("myModal");
+
+      // Get the image and insert it inside the modal - use its "alt" text as a caption
+      var img = document.getElementById(obj.id);
+      var modalImg = document.getElementById("img01");
+      var captionText = document.getElementById("caption");
+
+      img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt;
+      }
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+          modal.style.display = "none";
+      }
+  }
+
+  function dusra(obj){
+      var modal = document.getElementById("myModal1");
+
+      // Get the image and insert it inside the modal - use its "alt" text as a caption
+      var img = document.getElementById(obj.id);
+      var modalImg = document.getElementById("id_img");
+      var captionText = document.getElementById("caption1");
+
+      img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt;
+      }
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close1")[0];
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+          modal.style.display = "none";
+      }
+  }
+</script>
+
+
+<script>                                            
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+</body>
+</html>

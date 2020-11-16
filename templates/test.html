@@ -1,0 +1,65 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" type="image/jpg" href="{% static 'icons/gp2.png' %}">
+
+
+    <title>Security</title>
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	
+    <!-- function drawMultSeries() { -->
+      <!-- var data = google.visualization.arrayToDataTable([ -->
+        <!-- ['Year', 'IN', 'OUT'], -->
+        <!-- ['SE', 12, 8], -->
+        <!-- ['TE', 3, 6], -->
+        <!-- ['BE', 9, 8] -->
+      <!-- ]); -->
+
+</head>
+<body>
+
+
+
+    <div id="chart_div"></div>
+
+
+<script>
+    google.charts.load('current', {packages: ['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawMultSeries);
+
+function drawMultSeries() {
+      var data = google.visualization.arrayToDataTable([
+        ['Year', 'IN', 'OUT'],
+        ['FE', {{data.6}}, {{data.7}}],
+        ['SE', {{data.4}}, {{data.5}}],
+        ['TE', {{data.2}}, {{data.3}}],
+        ['BE', {{data.0}}, {{data.1}}]
+      ]);
+
+  var options = {
+    title: 'Coputer Department',
+    chartArea: {width: '30%'},
+    colors: ['#FFFF00', '#00FFFF'],
+    hAxis: {
+      title: 'No of times permission',
+      minValue: 0
+    },
+    vAxis: {
+      title: 'YEAR',
+      minValue: 0
+    }
+  };
+
+  var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
+}
+</script>
+
+
+</body>
+</html>

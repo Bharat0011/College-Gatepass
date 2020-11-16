@@ -1,0 +1,82 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/home_try.css' %}">
+	<link rel="shortcut icon" type="image/jpg" href="{% static 'icons/gp2.png' %}">
+
+	<title>KJEI Gate Pass</title>
+	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<div id="mySidenav" class="sidenav">
+	  		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  		<a href="/" id="sp-1" >Home</a>
+	 		<a href="about_us" >About</a>
+	  		<a href="#" >Contact</a>
+		</div>
+		<div class="top-nav-bar">					<!--------------TOP NAVIGATION BAR----------------->
+			<span class="top-nav-bar-burger"  onclick="openNav()">&#9776;</span>
+			<h1>KJCOEMR GATE PASS</h1>
+			<nav>
+				<ul class="top-nav-bar-ul">
+					<li><a href="/">HOME</a></li>
+					<li><a href="about_us">ABOUT</a></li>
+					<li><a href="#">CONTACT</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<section id="showcase">
+		<div class="container">
+		</div>
+	</section>
+	<section id="boxes">
+	<div class="container">
+		<div class="box">
+			<a href="student/student_login">
+			<img src="{% static 'icons/std.png' %}">
+			<h3>Student</h3></a>
+		</div>
+		<div class="box">
+			<a href="hod/hod_login">
+			<img src="{% static 'icons/hod.png' %}">
+			<h3>HOD</h3></a>
+		</div>
+		<div class="box">
+			<a href="principal/principal_login">
+			<img src="{% static 'icons/principal.png' %}">
+			<h3>Principal</h3></a>
+		</div>
+		<div class="box">
+			<a href="gfm/gfm_login">
+			<img src="{% static 'icons/teacher.png' %}">
+			<h3>GFM</h3></a>
+		</div>
+
+		<div class="box">
+			<a href="security/security_login">
+			<img src="{% static 'icons/security.jpg' %}">
+			<h3>Security</h3></a>
+		</div>		
+	</div>
+</section>
+<footer>
+<p>GATE  PASS	</p>
+<p style="font-size: 10px;">DEVELOPED BY TRITONS</p>
+</footer>
+
+		<!----------------------------------------------------------- JAVASCRIPT ------------------------------>
+	<script>											
+		function openNav() {
+  		document.getElementById("mySidenav").style.width = "250px";
+		}
+
+		function closeNav() {
+  		document.getElementById("mySidenav").style.width = "0";
+		}
+	</script>
+</body>
+</html>

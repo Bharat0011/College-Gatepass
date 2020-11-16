@@ -1,0 +1,137 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/stu_rep.css' %}">
+	<link rel="shortcut icon" type="image/jpg" href="{% static 'icons/gp2.png' %}">
+	<title>Student Reports</title>
+	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<div id="mySidenav" class="sidenav">
+	  		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  		<a href="stu_home" id="sp-1">Student<br>Reports</a>
+	 		<a href="in_apply" >In<br>Request</a>
+	  		<a href="out_apply" >Out<br>Request</a>
+	  		<div class="thin-line"></div>
+			  {%if user.is_authenticated %}
+			  <a href="my_profile">Hello<br>{{user.first_name}}</a>
+			  <a href="logout">LogOut</a>
+			  {%else%}
+			  <a href="#">Hello<br>---</a>
+			  <a href="logout">LogOut</a>
+			  {%endif%}
+		</div>
+		<div class="top-nav-bar">					<!--------------TOP NAVIGATION BAR----------------->
+			<span class="top-nav-bar-burger"  onclick="openNav()">&#9776;</span>
+			<h1>KJCOEMR GATE PASS</h1>
+			<nav>
+				<ul class="top-nav-bar-ul">
+					{%if user.is_authenticated %}
+					<li><a href="my_profile">Hello {{user.first_name}}</a></li>
+					<li><a href="logout">LOGOUT</a></li>
+					{%else%}
+                    <li><a href="#">Hello<br>---</a></li>
+                    <li><a href="logout">LogOut</a></li>
+                    {%endif%}
+				</ul>
+			</nav>
+		</div>
+		<div class="side-nav-bar">					<!--------------SIDE NAVIGATION BAR----------------->
+			<li id="stu-ani-1"><a href="stu_home">Student<br>Reports</a></li>
+			<li><a href="in_apply">In<br>Request</a></li>
+			<li><a href="out_apply">Out<br>Request</a></li>
+		</div>
+	</header>
+	<section class="student-reports-main">						<!---------------REQUEST LOGIC----------------------->
+		<h1 class="stu-apps-heading">STUDENT<br>REPORTS</h1>
+<!-- <br>
+<br>
+<br>
+<br>
+<br> -->
+
+    	<form class="stu-report-date" method="POST">{%csrf_token%}
+				<h3>FROM : </h3><input type="date"  name="date_from">
+				<h3>TO : </h3><input type="date" name="date_to">
+				<h3></h3><input type="submit" name="Submit" class="btn">
+		</form>
+        <section id="req">
+    		<div class="container">
+        		<div style="overflow-x: auto;">
+					{%if data|length %}
+
+        			<table>
+                		<tr bgcolor="lightblue">
+                    		<th>Sr.no</th>
+                    		<th>Apply Time</th>
+                    		<th>Reason</th>
+                    		<th>Request Type</th>
+							<th>Status</th>
+							<th>Request Accepted By</th>
+						</tr> 
+						{% for dat in data %} 
+                		<tr>
+                    		<td>{{dat.0}}</td>
+                    		<td>{{dat.1}}</td>
+                    		<td>{{dat.2}}</td>
+							<td>{{dat.3}}</td>
+							{%if dat.4 == 'accepted'%}
+							<td><h4 class="col">Accepted</h4></td>
+							{%elif dat.4 == 'rejected'%}
+							<td><h4 class="col1">Rejected</h4></td>
+							{%elif dat.4 == 'Pending'%}
+							<td><h4 class="col2">Pending</h4></td>
+							{%elif dat.4 == 'IN'%}
+							<td><h4 class="col3">IN</h4></td>
+							{%elif dat.4 == 'OUT'%}
+							<td><h4 class="col3">OUT</h4></td>
+							{%elif dat.4 == 'gfm_rejected'%}
+							<td><h4 class="col5">GFM Rejected</h4></td>
+							{%elif dat.4 == 'gfm_accepted'%}
+							<td><h4 class="col4">GFM Accepted</h4></td>
+							{%elif dat.4 == 'hod_rejected'%}
+							<td><h4 class="col6">HOD Rejected</h4></td>
+							{%endif%}   
+							
+							<td>{{dat.5}}</td>
+						</tr>
+                		{%endfor%}
+					</table>
+				</div>
+			</div>
+		</section>
+					{%else%}
+
+					<section id="Warning">
+						<div class="container">
+							<div class="alert-warning">     <!---Alert Message--->
+								{%block content%}
+                				{%for  message in messages %}
+                				<h2>{{message}}</h2>
+               					<br>
+                				{%endfor%}
+                				{%endblock%} 
+								<strong>Warning!</strong> No records found.
+							</div>
+						</div>
+					</section>
+					{%endif%} 
+   				<!-- </div> -->
+    		<!-- </div> -->
+		<!-- </section> -->
+	</section>
+	<!----------------------------------------------------------- JAVASCRIPT ------------------------------>
+	<script>											
+		function openNav() {
+  			document.getElementById("mySidenav").style.width = "250px";
+		}
+
+		function closeNav() {
+  			document.getElementById("mySidenav").style.width = "0";
+		}
+	</script>
+</body>
+</html>

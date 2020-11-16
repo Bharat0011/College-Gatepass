@@ -1,0 +1,441 @@
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+*{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+/*---------------------------- TOP NAVIGATION BAR ---------------------------------*/
+.top-nav-bar{
+	height: 65px;
+	background-color: #144595;
+	font-family: 'Poppins', sans-serif;
+	color: white;
+	position: static;
+	width: 100%;
+	border-bottom: 2px solid red;
+	top: 0px;
+}
+.top-nav-bar h1{
+	float: left;
+	margin-left: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: 4px;
+	letter-spacing: 2px;
+	animation-name: fade;
+	animation-duration: 1s;
+}
+.top-nav-bar-ul{
+	float: right;
+	list-style-type: none;
+	margin-right: 20px;
+	margin-top:20px;
+	margin-bottom: 15px;
+	margin-left: 4px; 
+}
+.top-nav-bar-ul li{
+	display: inline-block;
+	margin-left: 5px;
+	margin-right: 5px;
+	letter-spacing: 2px;
+	padding: 2px 2px;
+}
+.top-nav-bar-ul li a{
+	text-decoration: none;
+	color: white;
+	text-transform: uppercase;
+	padding-right: 6px;
+	padding-left: 6px;
+	animation-name: fade;
+	animation-duration: 1s;
+	transition:all 1s ease;
+}
+.top-nav-bar-ul li a:hover{
+	background-color: #ff4d4d;
+	color: #144595;
+	border-radius: 25px;
+	transition:all 0.5s ease-out;
+	font-weight: bold;
+}
+.top-nav-bar-burger{
+	display: none;
+}
+
+.sidenav{
+	display: none;
+}
+/**********************************************/
+.container{
+	width: 90%;
+	margin: auto;
+	overflow: hidden;
+
+}
+/* #log{
+} */
+#log h1{
+	pointer-events: none;
+	text-align: center;
+	margin-top: 60px;
+	font-size: 50px;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 100px;
+	letter-spacing: 0px;
+	animation-name: faded;
+	animation-duration: 1s;
+}
+#textbox{
+	text-align: center;
+	margin-top: 20px;
+	font-size: 20px;
+	border: none;
+	font-family: 'Poppins', sans-serif;
+}
+#textbox input{
+	background:white;
+	font-size: 18px;
+	margin: 10px;
+	padding: 8px;
+	padding-left: 0px;
+	overflow: hidden;
+	color: black;
+	border:none;
+	border-bottom: 3px solid #144595;
+	outline: none;
+	padding-left: 2px;
+}
+#w{
+	background-color: white;
+	color: black;
+	padding: 12px;
+	width: 240px;
+	text-align: center;
+	border: 2px solid #144595;
+	font-weight: bolder;
+}
+
+form{
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: white;
+	display: block;
+	border-radius: 8px;
+
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.66),0 6px 20px 0 rgba(0,0,0,0.66);
+	margin-right: 35%;
+	margin-left: 35%;
+	padding-top: 3%;
+	padding-bottom: 3%;
+	/*border-radius: 25px;*/
+
+}
+
+#btn{
+	text-align: center;
+	margin-top: 25px;
+}
+#btn .bt{
+	width: 100px;
+	border:2px solid #144595 ;
+	padding: 7px;
+	cursor: pointer;
+	border-radius: 8px;
+	background-color: white;
+	font-size: 17px;
+	font-family: 'Poppins', sans-serif;
+	font-weight: bold;
+	transition: 0.6s ease;
+
+}
+.bt:hover,.bt:active{
+	color: white;
+	transition: 0.6s ease;
+}
+#btn .bt:hover{
+	background-color: #144595;
+	transition: 0.6s ease;
+}
+#msg{
+	text-align: center;
+	margin-top: 30px;
+}
+#msg p{
+	font-size: large;
+}
+#msg a{
+	text-decoration: none;
+	color: red;
+}
+#msg a:hover,#msg a:active{
+	font-weight: bolder;
+}
+#forgot{
+	margin-top: 20px;
+	text-align: center;
+}
+#forgot p{
+	font-size: large;
+}
+#forgot a{
+	text-decoration: none;
+	color: red;
+}
+#forgot:hover,#forgot a:active{
+	font-weight: bolder;
+}
+.alert-warning{
+  padding: 20px;
+  background-color: red;
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+  border-radius: 25px;
+  animation-name: fade;
+  animation-duration: 2s;
+  margin-right: 35%;
+  margin-left: 35%;
+  font-size: large;
+  font-family: 'Poppins', sans-serif;
+}
+@keyframes fade{
+	from{
+		opacity: 0;
+		color: transparent;
+	}
+	to{
+		opacity: 1;
+		color: white;
+	}
+}
+@keyframes faded{
+	from{
+		opacity: 0;
+		color: transparent;
+	}
+	to{
+		opacity: 1;
+		color: black;
+	}
+}
+
+/*-------------------------------------------------- MEDIA QUERIES -----------------------------------------*/
+
+/*************************************************************************************************************/
+/*---------------------------------------          TABLET VIEW             ----------------------------------*/
+/*************************************************************************************************************/
+@media	(min-width: 481px) and (max-width: 1024px) {
+	/*---------- TOP NAV BAR -------------*/
+	.top-nav-bar{
+		position: static;
+	}
+	.top-nav-bar h1{
+		margin-left: 25%;
+		margin-right:5%;
+		font-size: xx-large;
+		margin-top: 8px;
+		color: white;
+		font-family: 'Poppins', sans-serif;
+		letter-spacing: 2px;
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+	.top-nav-bar-ul{
+		display: none;
+	}
+	.top-nav-bar-ul li{
+		display: none;
+	}
+	.top-nav-bar-ul li a{
+		display: none;
+	}
+	.top-nav-bar-ul li a:hover{
+		display: none;
+	}
+	/*---------------------- SLIDE NAV BAR --------------------*/
+	.sidenav {
+		display: block;
+  		height: 100%;
+  		width: 0;
+  		position: fixed;
+  		z-index: 1;
+  		top: 0;
+  		left: 0;
+  		background-color: #111;
+  		overflow-x: hidden;
+  		transition: 0.5s;
+  		padding-top: 60px;
+	}
+
+	.sidenav a {
+  		padding: 8px 8px 8px 32px;
+  		text-decoration: none;
+  		font-size: 25px;
+  		color: #818181;
+  		display: block;
+  		transition: 0.3s;
+  		margin-top: 10px;
+  		font-family: 'Poppins', sans-serif;
+	}
+
+	.sidenav a:hover {
+  		color: #f1f1f1;
+	}
+
+	.sidenav .closebtn {
+  		position: absolute;
+  		top: 0;
+  		right: 25px;
+  		font-size: 36px;
+  		margin-left: 50px;
+	}
+	.top-nav-bar-burger{
+		position: absolute;
+		padding-top: 10px;
+		padding-left: 20px;
+		color: white;
+		font-size:30px;
+		cursor:pointer;
+		display: block;
+		animation-name: fade;
+		animation-duration: 1s;
+	}
+	#sp-1{
+		color: #f1f1f1;
+	}
+	#sp-2{
+		color: #f1f1f1;
+	}
+	#sp-3{
+		color: #f1f1f1;	
+	}
+	form{
+		margin-right: 20%;
+		margin-left: 20%;
+	}
+	.alert-warning{
+  		margin-right: 20%;
+  		margin-left: 20%;
+	}	
+}
+
+
+/*************************************************************************************************************/
+/*---------------------------------------          MOBILE VIEW             ----------------------------------*/
+/*************************************************************************************************************/
+@media (max-width: 480px){
+	/*---------- TOP NAV BAR -------------*/
+	.top-nav-bar{
+		position: static;
+	}
+	.top-nav-bar h1{
+		font-size: x-large;
+		font-weight: bolder;
+		text-align: center;
+		margin-top: 4%;
+		margin-bottom: 5px;
+		letter-spacing: 1px;
+		margin-left: 20%;
+	}
+	.top-nav-bar-ul{
+		display: none;
+	}
+	.top-nav-bar-ul li{
+		display: none;
+	}
+	.top-nav-bar-ul li a{
+		display: none;
+	}
+	.top-nav-bar-ul li a:hover{
+		display: none;
+	}
+	/*---------------------- SLIDE NAV BAR --------------------*/
+	.sidenav {
+		display: block;
+  		height: 100%;
+  		width: 0;
+  		position: fixed;
+  		z-index: 1;
+  		top: 0;
+  		left: 0;
+  		background-color: #111;
+  		overflow-x: hidden;
+  		transition: 0.5s;
+  		padding-top: 60px;
+	}
+
+	.sidenav a {
+  		padding: 8px 8px 8px 32px;
+  		text-decoration: none;
+  		font-size: 25px;
+  		color: #818181;
+  		display: block;
+  		transition: 0.3s;
+  		margin-top: 10px;
+  		font-family: 'Poppins', sans-serif;
+	}
+
+	.sidenav a:hover {
+  		color: #f1f1f1;
+	}
+
+	.sidenav .closebtn {
+  		position: absolute;
+  		top: 0;
+  		right: 25px;
+  		font-size: 36px;
+  		margin-left: 50px;
+	}
+	.top-nav-bar-burger{
+		position: absolute;
+		padding-top: 10px;
+		padding-left: 20px;
+		color: white;
+		font-size:30px;
+		cursor:pointer;
+		display: block;
+		animation-name: fade;
+		animation-duration: 1s;
+	}
+	#sp-1{
+		color: #f1f1f1;
+	}
+	#sp-2{
+		color: #f1f1f1;
+	}
+	#sp-3{
+		color: #f1f1f1;	
+	}
+	.stu-apps-heading{
+		font-family: 'Poppins', sans-serif;
+		font-size: xx-large;
+		font-weight: bolder;
+		text-align: center;
+		margin-top: 15px;
+		margin-bottom: 5px;
+		letter-spacing: 2px;
+		display: block;
+	}
+	#textbox,
+	#log{
+		float: none;
+		text-align: center;
+		width: 100%;
+		padding-top: 0px;
+	}
+	header{
+		padding-bottom: 20px;
+	}
+	form{
+	margin-right: 15%;
+	margin-left: 15%;
+	padding-top: 5%;
+	padding-bottom: 6%;
+	/*border-radius: 25px;*/
+
+	}
+	.alert-warning{
+  		margin-right: 15%;
+  		margin-left: 15%;
+	}
+}

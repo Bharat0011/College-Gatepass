@@ -1,0 +1,49 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="shortcut icon" type="image/jpg" href="{% static 'gp2.png' %}">
+	
+	<title>About KJCOEMR GATE PASS</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div id="branding">
+			<a href="/"><h1>KJCOEMR GATE PASS</h1></a>
+			</div>
+			<nav>
+				<ul>
+						{%if user.is_authenticated %}
+									
+						<li>Hello {{user.first_name}}</li>
+						<li><a href="about_us">ABOUT</a></li>
+                        <li><a href="#">CONTACT</a></li>
+						<li><a href="logout">LOGOUT</a></li>
+                        {% else %}
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="about_us">ABOUT</a></li>
+                        <li><a href="#">CONTACT</a></li>
+                        {%endif%}
+						
+
+				</ul>
+			</nav>
+			
+		</div>
+	</header>
+	<section id="info">
+		<div class="container">
+			<h1>ABOUT KJCOEMR GATE PASS</h>
+			<p>Our mission is to digitalize the way to apply for gate pass of KJCOEMR and reduce all the paper work.</p>
+	<p>We believe in saving time and utilizing it in best possible way.By applying for gate pass digitally it will definately save your time as well as save the time of your Teacher's as it will reduce work of signing your written application.</p>
+		</div>
+	</section>
+	<footer>
+<p>KJCOEMR GATE PASS,Copyright &copy;2019</p>
+</footer>
+</body>
+</html>

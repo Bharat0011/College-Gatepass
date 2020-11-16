@@ -1,0 +1,148 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/edit_myprof.css' %}">
+	<link rel="shortcut icon" type="image/jpg" href="{% static 'icons/gp2.png' %}">
+	<title>Edit Profile</title>
+	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
+
+</head>
+<body>
+	<header>
+
+		<div id="mySidenav" class="sidenav">
+	  		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  		<a href="gfm_stu_profile" id="sp-1">Student<br>Profile</a>
+	  		<div class="thin-line"></div>
+			  {%if user.is_authenticated %}
+			  <a href="#">Hello<br>{{user.first_name}}</a>
+			  <a href="logout">LogOut</a>
+			  {%else%}
+			  <a href="#">Hello<br>---</a>
+			  <a href="logout">LogOut</a>
+			  {%endif%}
+		</div>
+		<div class="top-nav-bar">					<!--------------TOP NAVIGATION BAR----------------->
+			<span class="top-nav-bar-burger"  onclick="openNav()">&#9776;</span>
+			<h1>KJCOEMR GATE PASS</h1>
+			<nav>
+				<ul class="top-nav-bar-ul">
+					{%if user.is_authenticated %}
+                    <li><a href="#">Hello {{user.first_name}}</a></li>
+                    <li><a href="logout">LogOut</a></li>
+                    {%else%}
+                    <li><a href="#">Hello<br>---</a></li>
+                    <li><a href="logout">LogOut</a></li>
+                    {%endif%}
+				</ul>
+			</nav>
+		</div>
+		<div class="side-nav-bar">					<!--------------SIDE NAVIGATION BAR----------------->
+			<li id="stu-ani-2"><a href="gfm_stu_profile">Student<br>Profile</a></li>
+		</div>
+	</header>
+	<section id="log">								<!------------- MAIN CONTENT ------------------------>
+		<div class="container">
+			<h1>Student Profile</h1>
+		</div>
+	</section> 
+	<section id="profile_id">
+		<div class="container">
+			 <form action="" method="post" enctype="multipart/form-data">{%csrf_token%}
+				 {%for dat in data%}
+				<div class="photo_name">
+					<img src="{{img.0.0}}">
+					<br>
+					<!-- <input type="file"  placeholder="ID Photo" id="per_img" name="user_img" value="{{dat.0}}" style=""> -->
+					<div class="lbel">
+						<br>
+						<label for="per_img">Click here to Change Personal Photo</label>
+					</div>					
+					<br>
+					<img src="{{img.0.1}}">
+					<br>
+					<div class="lbel">
+						<br>
+						<!-- <input type="file"  placeholder="ID Photo" id="id_img" name="icard_img" value="{{dat.1}}" style=""> -->
+						<label  for="id_img">Click here to Change I-Card Photo</label>
+					</div>
+
+					<h4>Username</h4>
+					<input type="text" value="{{dat.2}}" name="username">
+					<h4>First Name</h4>
+					<input type="text" value={{dat.3}} name="first_name">
+					<h4>Last Name</h4>
+					<input type="text" value="{{dat.4}}" name="last_name">
+					<h4>YEAR</h4>
+					<select class="select" name="year">
+						<option value={{dat.5}}>Current : {{dat.5}}</option>
+						<option value="FE">FE</option >
+							<option value="SE">SE</option>
+							<option value="TE">TE</option>
+							<option value="BE">BE</option>
+					</select>
+
+					<h4>BRANCH</h4>
+					<select class="select" name="branch">
+						<option value={{dat.6}}>Current : {{dat.6}}</option>
+						<option value="FE">First Year/FE</option >
+						<option value="computer">Computer</option >
+						<option value="civil">Civil</option>
+						<option value="mechanical">Mechanical</option>
+						<option value="electrical">Electrical</option>
+						<option value="electronic">Electronics</option>
+					</select>
+
+					<h4>Gender</h4>
+					<select class="select" name="gender">
+						{%if  dat.7 == 'male' %}
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+						{%else%}
+						<option value="female">Female</option>
+						<option value="male">Male</option>
+						{%endif%}
+					</select>
+
+					<h4>Roll Number</h4>
+					<input type="text" value="{{dat.8}}" name="roll_no">
+
+					<h4>EMAIL-ID</h4>
+					<input type="email" value="{{dat.9}}" name="email">
+
+					<h4>Mobile Number</h4>
+					<input type="tel" value="{{dat.10}}" name="mobile_no">
+
+					
+
+					<h4>GFM Name</h4>
+					<select class="select" name="gfm">
+						<option value={{dat.11}}>Current : {{curr_gfm.0}} {{curr_gfm.1}}</option>
+						{% for g in gfm %}
+						<option value={{g.0}}>{{g.1}} {{g.2}}</option>
+						{%endfor%}
+					</select>
+				</div>
+				{%endfor%}
+				<section id="btn_id">
+					<button type="submit"class="btn">Save</button>
+				</section>
+			</form>
+			
+		</div>
+	</section>
+	<!----------------------------------------------------------- JAVASCRIPT ------------------------------>
+	<script>											
+		function openNav() {
+			document.getElementById("mySidenav").style.width = "250px";
+		}
+
+		function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+		}
+	</script>
+</body>
+</html>

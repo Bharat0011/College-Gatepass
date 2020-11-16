@@ -1,0 +1,334 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+/*---------------------------- TOP NAVIGATION BAR ---------------------------------*/
+.top-nav-bar{
+	height: 65px;
+	background-color: #144595;
+	font-family: 'Poppins', sans-serif;
+	color: white;
+	position: static;
+	width: 100%;
+	border-bottom: 2px solid red;
+	top: 0px;
+}
+.top-nav-bar h1{
+	float: left;
+	margin-left: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: 4px;
+	letter-spacing: 2px;
+	animation-name: fade;
+	animation-duration: 1s;
+}
+.top-nav-bar-ul{
+	float: right;
+	list-style-type: none;
+	margin-right: 20px;
+	margin-top:20px;
+	margin-bottom: 15px;
+	margin-left: 4px; 
+}
+.top-nav-bar-ul li{
+	display: inline-block;
+	margin-left: 5px;
+	margin-right: 5px;
+	letter-spacing: 2px;
+	padding: 2px 2px;
+}
+.top-nav-bar-ul li a{
+	text-decoration: none;
+	color: white;
+	text-transform: uppercase;
+	padding-right: 6px;
+	padding-left: 6px;
+	animation-name: fade;
+	animation-duration: 1s;
+	transition:all 1s ease;
+}
+.top-nav-bar-ul li a:hover{
+	background-color: #ff4d4d;
+	color: #144595;
+	border-radius: 25px;
+	transition:all 0.5s ease-out;
+	font-weight: bold;
+}
+.top-nav-bar-burger{
+	display: none;
+}
+
+.sidenav{
+	display: none;
+}
+/*------------------------------------------- MAIN CONTENT ------------------------------------------*/
+#showcase{
+	min-height: 450px;
+	background:linear-gradient(rgba(0,0,0,0.4),rgba(168, 128, 128, 0.4)),url("../show.jpg")no-repeat;
+	text-align: center;
+	color: white;
+	background-size: cover;
+	background-position: center;
+}
+#boxes{
+	margin-top: 20px;
+	font-family: 'Poppins', sans-serif;
+	font-size: 20px;
+	color: black;
+	font-weight: bolder;
+  	animation-name: sli;
+  	animation-duration: 2s;
+  	z-index: 100;
+}
+
+#boxes .box{
+	float: left;
+	width: 30%;
+	padding: 10px;
+	text-align: center;
+}
+
+#boxes .box img{
+	width: 100px;
+}
+
+.box a{
+	text-decoration: none;
+}
+footer{
+	bottom: 0;
+	padding: 20px;
+	margin-top: 60px;
+	color: white;
+	background-color: #00001a;
+	text-align: center;
+	position: relative;
+	clear: both;
+	font-family: 'Poppins', sans-serif;
+}
+footer p sub{
+	font-size: 10px;
+}
+footer p{
+	font-size: large;
+	letter-spacing: 2px;
+}
+@keyframes fade{
+	from{
+		opacity: 0;
+		color: transparent;
+	}
+	to{
+		opacity: 1;
+		color: white;
+	}
+}
+/*-------------------------------------------------- MEDIA QUERIES -----------------------------------------*/
+
+/*************************************************************************************************************/
+/*---------------------------------------          TABLET VIEW             ----------------------------------*/
+/*************************************************************************************************************/
+@media	(min-width: 481px) and (max-width: 1024px) {
+	/*---------- TOP NAV BAR -------------*/
+	.top-nav-bar{
+		position: static;
+	}
+	.top-nav-bar h1{
+		margin-left: 25%;
+		margin-right:5%;
+		font-size: xx-large;
+		margin-top: 8px;
+		color: white;
+		font-family: 'Poppins', sans-serif;
+		letter-spacing: 2px;
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+	.top-nav-bar-ul{
+		display: none;
+	}
+	.top-nav-bar-ul li{
+		display: none;
+	}
+	.top-nav-bar-ul li a{
+		display: none;
+	}
+	.top-nav-bar-ul li a:hover{
+		display: none;
+	}
+	/*---------------------- SLIDE NAV BAR --------------------*/
+	.sidenav {
+		display: block;
+  		height: 100%;
+  		width: 0;
+  		position: fixed;
+  		z-index: 1;
+  		top: 0;
+  		left: 0;
+  		background-color: #111;
+  		overflow-x: hidden;
+  		transition: 0.5s;
+  		padding-top: 60px;
+	}
+
+	.sidenav a {
+  		padding: 8px 8px 8px 32px;
+  		text-decoration: none;
+  		font-size: 25px;
+  		color: #818181;
+  		display: block;
+  		transition: 0.3s;
+  		margin-top: 10px;
+  		font-family: 'Poppins', sans-serif;
+	}
+
+	.sidenav a:hover {
+  		color: #f1f1f1;
+	}
+
+	.sidenav .closebtn {
+  		position: absolute;
+  		top: 0;
+  		right: 25px;
+  		font-size: 36px;
+  		margin-left: 50px;
+	}
+	.top-nav-bar-burger{
+		position: absolute;
+		padding-top: 10px;
+		padding-left: 20px;
+		color: white;
+		font-size:30px;
+		cursor:pointer;
+		display: block;
+		animation-name: fade;
+		animation-duration: 1s;
+	}
+	#sp-1{
+		color: #f1f1f1;
+	}
+	#sp-2{
+		color: #f1f1f1;
+	}
+	#sp-3{
+		color: #f1f1f1;	
+	}
+	#boxes .box{
+		float: none;
+		text-align: center;
+		width: 100%;
+	}
+	#showcase h1{
+		margin-top: 40px;
+	}
+}
+
+
+/*************************************************************************************************************/
+/*---------------------------------------          MOBILE VIEW             ----------------------------------*/
+/*************************************************************************************************************/
+@media (max-width: 480px){
+	/*---------- TOP NAV BAR -------------*/
+	.top-nav-bar{
+		position: static;
+	}
+	.top-nav-bar h1{
+		font-size: x-large;
+		font-weight: bolder;
+		text-align: center;
+		margin-top: 4%;
+		margin-bottom: 5px;
+		letter-spacing: 1px;
+		margin-left: 20%;
+	}
+	.top-nav-bar-ul{
+		display: none;
+	}
+	.top-nav-bar-ul li{
+		display: none;
+	}
+	.top-nav-bar-ul li a{
+		display: none;
+	}
+	.top-nav-bar-ul li a:hover{
+		display: none;
+	}
+	/*---------------------- SLIDE NAV BAR --------------------*/
+	.sidenav {
+		display: block;
+  		height: 100%;
+  		width: 0;
+  		position: fixed;
+  		z-index: 1;
+  		top: 0;
+  		left: 0;
+  		background-color: #111;
+  		overflow-x: hidden;
+  		transition: 0.5s;
+  		padding-top: 60px;
+	}
+
+	.sidenav a {
+  		padding: 8px 8px 8px 32px;
+  		text-decoration: none;
+  		font-size: 25px;
+  		color: #818181;
+  		display: block;
+  		transition: 0.3s;
+  		margin-top: 10px;
+  		font-family: 'Poppins', sans-serif;
+	}
+
+	.sidenav a:hover {
+  		color: #f1f1f1;
+	}
+
+	.sidenav .closebtn {
+  		position: absolute;
+  		top: 0;
+  		right: 25px;
+  		font-size: 36px;
+  		margin-left: 50px;
+	}
+	.top-nav-bar-burger{
+		position: absolute;
+		padding-top: 10px;
+		padding-left: 20px;
+		color: white;
+		font-size:30px;
+		cursor:pointer;
+		display: block;
+		animation-name: fade;
+		animation-duration: 1s;
+	}
+	#sp-1{
+		color: #f1f1f1;
+	}
+	#sp-2{
+		color: #f1f1f1;
+	}
+	#sp-3{
+		color: #f1f1f1;	
+	}
+	.stu-apps-heading{
+		font-family: 'Poppins', sans-serif;
+		font-size: xx-large;
+		font-weight: bolder;
+		text-align: center;
+		margin-top: 15px;
+		margin-bottom: 5px;
+		letter-spacing: 2px;
+		display: block;
+	}
+	#boxes .box{
+		float: none;
+		text-align: center;
+		width: 100%;
+	}
+	#showcase h1{
+		margin-top: 40px;
+	}
+}

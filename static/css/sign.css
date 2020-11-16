@@ -1,0 +1,316 @@
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+*{
+	margin: 0;
+	padding: 0;
+	transition: 0.4s ease;
+}
+
+body{
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 15px;
+	line-height:1.5;
+	margin: 0;
+	padding: 0;
+	transition: 0.6s ease;
+	background-color: white;
+
+}
+/*GLOBAL*/
+
+.heading{
+	font-family: 'Francois One', sans-serif;
+	font-weight: 100px;
+	letter-spacing: 0px;
+	
+}
+.container{
+	width: 90%;
+	margin: auto;
+	overflow: hidden;
+
+
+}
+select{
+	text-align: center;
+	padding-right: 50px;
+	width:220px;
+}
+
+header ul{
+	margin: 0;
+	padding: 0;
+
+}
+h1{
+	cursor: pointer;
+	transition: 0.6s ease;
+
+}
+header{
+	background: #144595;
+	color: white;
+	padding-top: 30px;
+	min-height: 70px;
+	border-bottom: red 3px solid;
+	font-family: 'Poppins', sans-serif;
+	letter-spacing: 3px;
+	word-spacing: 3px;
+}
+header a{
+	color: white;
+	text-decoration: none;
+	font-size: 16px;
+
+}
+
+header li{
+	float: left;
+	display: inline;
+	padding: 0 20px 0 20px;
+	transition: 0.6s ease;
+
+}
+
+header #branding{
+	float: left;
+}
+
+header #branding h1{
+	margin: 0;
+	text-align: center;
+	resize: unset;
+}
+header nav{
+	float: right;
+	margin-top: 10px;
+}
+header .highlight,header .current a{
+	color: red;
+	font-weight: bold;
+}
+
+header a:hover{
+	color: red;
+	font-weight: bold;
+		transition: 0.6s ease;
+}
+
+footer{
+	padding: 20px;
+	margin-top: 100px;
+	color: white;
+	background-color: #00001a;
+	text-align: center;
+}
+
+
+#log{
+}
+#log h1{
+	text-align: center;
+	margin-top: 30px;
+	font-size: 50px;
+}
+#textbox{
+	text-align: center;
+	margin-top: 20px;
+	font-size: 15px;
+	
+	max-width: 100%;
+	
+	
+}
+label{
+	cursor: pointer;
+}
+
+
+
+form{
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color:white /*#ffcc00*/;
+	display: flex;
+	flex-direction: row;
+
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.66),0 6px 20px 0 rgba(0,0,0,0.66);
+	margin-right: 25%;
+	margin-left: 25%;
+	padding-bottom:3%;
+	padding-top:3%;
+	border-radius: 10px;
+	
+
+}
+input[type="radio"]{
+	-ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+    transform: scale(1.5);
+    margin: 5px;
+}
+.input-group{
+	float: left;
+	display: inline;
+	width: 90%;
+	margin: 0 auto;
+	font-family: 'Concert One', cursive;
+}
+
+.input-group input{
+	position: relative;
+	width: 100%;
+	padding: 1px 1;
+	margin-top: 0.5px;
+	border:none;
+	outline: none;
+	font-size: 1.8rem;
+
+
+}
+
+.input[type="date"]{
+	color: black;
+}
+
+select{
+	background-color: white;
+	border:2px solid #144595;
+	width: 97%;
+	font-size: 15px;
+	/*border:3px solid #144595;*/
+	margin-top: 5%;
+	margin-bottom: 5%;
+	padding-top: 2.5%;
+	padding-bottom: 2.5%;
+	font-weight: bolder;
+}
+
+.container input[type="text"]{
+	color: black;
+}
+
+.container input{
+	background-color:white;
+	border: none;
+	border-bottom: 3px solid #144595;
+	
+}
+
+#check span{
+	margin-left: 50px;
+}
+#textbox input{
+	
+	font-size: 18px;
+	margin: 10px;
+	/*padding: 5px;*/
+	overflow: hidden;
+	color: black;
+
+}
+
+.container input[type="radio"]{
+	width:5%;
+}
+#textbox p{
+	color: red;
+}
+#btn{
+	text-align: center;
+	margin-top: 25px;
+	background-color: white;
+	
+
+
+}
+#btn .bt{
+	width: 100px;
+	border:2px solid red;
+	padding: 10px;
+	cursor: pointer;
+	border-radius: 8px;
+	border-color: #144595;
+	/*background-color: white;*/
+	font-size: 20px;
+	font-family: 'Poppins', sans-serif;
+	font-weight: bold;
+
+
+}
+
+.bt:hover,.bt:active{
+	background-color:white;
+	color:black ;
+	transition: 0.6s ease;
+
+}
+
+#msg{
+	text-align: center;
+	margin-top: 30px;
+}
+#msg p{
+	font-size: 20px;
+	font-family: 'Poppins', sans-serif;
+}
+#msg a{
+	text-decoration: none;
+	color: red;
+}
+#msg a:hover,#msg a:active{
+	font-weight: bolder;
+}
+
+
+
+@media(max-width: 768px){
+	header #branding,
+	header nav,
+	header nav li,
+	#textbox,
+	#log,
+	#msg{
+		float: none;
+		text-align: center;
+		width: 100%;
+	}
+	header{
+		padding-bottom: 20px;
+	}
+
+	form{
+		margin-right: 15px;
+		margin-left: 15px;
+		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.55),0 6px 20px 0 rgba(0,0,0,0.55);
+	}
+	.heading{
+		font-size: 15%;
+	}
+	#btn .bt{
+	width: 100px;
+	border:2px solid red;
+	padding: 5px;
+	cursor: pointer;
+	border-radius: 8px;
+	border-color: #144595;
+	/*background-color: white;*/
+	font-size: 16px;
+	font-family: 'Poppins', sans-serif;
+	font-weight: bold;
+
+
+	}
+
+	#msg p{
+	font-size: 16px;
+	}
+
+
+
+
+}
+
+
+
+
+

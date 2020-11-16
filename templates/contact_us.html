@@ -1,0 +1,61 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'icons/gp2.png' %}">
+
+  <!--<meta name="display" content="KJCOEMR GATE PASS"> -->
+
+  <title>Contact Us</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">
+     <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Concert+One&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div id="branding">
+      <a href="index"><h1>KJCOEMR GATE PASS</h1></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index">HOME</a></li>
+          <li><a href="about_us">ABOUT</a></li>
+          <li class="current"><a href="#">CONTACT</a></li>
+        </ul>
+      </nav>    
+    </div>
+  </header>
+  
+<section id="log">
+  <div class="container">
+    <h1>Contact Us</h1>
+  </div>
+  
+</section>
+<section id="textbox">
+  <form action="" method="POST">{%csrf_token%}
+  <div class="container">
+    <input type="text" placeholder="Name" name="" value="" required="">
+  </div>
+  <div class="container">
+        <input type="email" placeholder="Email-ID" name="" value="" required="">
+    </div>
+             <textarea  class="msg" placeholder="Message.."></textarea>
+
+</section>
+<section id="btn">
+  <div class="container">
+<input class="bt" type="submit" name="Submit" value="Send">
+  </div>
+
+  </form>
+</section>
+<footer>
+<p>KJCOEMR GATE PASS,Copyright &copy;2019</p>
+</footer>
+</body>
+</html>

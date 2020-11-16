@@ -1,0 +1,91 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/my_profile.css' %}">
+	<link rel="shortcut icon" type="image/jpg" href="{% static 'icons/gp2.png' %}">
+	<title>Your Profile</title>
+	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
+
+</head>
+<body>
+	<header>
+		<div id="mySidenav" class="sidenav">
+	  		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  		<a href="stu_home" >Student<br>Reports</a>
+	 		<a href="in_apply">IN<br>Request</a>
+	  		<a href="out_apply" >OUT<br>Request</a>
+			<div class="thin-line"></div>
+				{%if user.is_authenticated %}
+				<a href="#" id="sp-1">Hello<br>{{user.first_name}}</a>
+				<a href="logout">LogOut</a>
+				{%else%}
+                <li><a href="#">Hello<br>---</a></li>
+                <li><a href="logout">LogOut</a></li>
+                {%endif%}
+			</div>
+		<div class="top-nav-bar">					<!--------------TOP NAVIGATION BAR----------------->
+			<span class="top-nav-bar-burger"  onclick="openNav()">&#9776;</span>
+			<h1>KJCOEMR GATE PASS</h1>
+			<nav>
+				<ul class="top-nav-bar-ul">
+					{%if user.is_authenticated %}
+					<li><a href="#" id="hi">Hello {{user.first_name}}</a></li>
+					<li><a href="logout">LOGOUT</a></li>
+					{%else%}
+                    <li><a href="#">Hello<br>---</a></li>
+                    <li><a href="logout">LogOut</a></li>
+                    {%endif%}
+				</ul>
+			</nav>
+		</div>
+		<div class="side-nav-bar">					<!--------------SIDE NAVIGATION BAR----------------->
+			<li><a href="stu_home">Student<br>Reports</a></li>
+			<li><a href="in_apply">IN <br> Request</a></li>
+			<li><a href="out_apply">OUT <br> Request</a></li>
+		</div>
+	</header>
+	<section id="log">								<!------------- MAIN CONTENT ------------------------>
+		<div class="container">
+			<br>
+			<br>
+			<h1>My Profile</h1>
+		</div>
+	</section>
+	{% for dat in data%}
+	<section id="profile_id">
+		<div class="container">
+			<div class="photo_name">
+			<img src="{{img.0.0}}">
+			<img src="{{img.0.1}}">
+			
+			<h2>{{dat.0}} {{dat.1}}</h2>
+			<h3>{{dat.2}}-{{dat.3}}</h3>
+			<div class="thin-line"></div>
+			<h4>Roll No : {{dat.4}}</h4>
+			<h4>Email-Id : {{dat.5}}</h4>
+			<h4>Mobile Number : {{dat.6}}</h4>
+			<!-- <h4>Date of Birth: 29 Feb,2000</h4> -->
+			<h4>GFM Name : {{gfm}}</h4>
+		</div>
+		</div>
+	</section>
+	{%endfor%}
+	<!-- <section id="btn_id">
+		<div class="container">
+			<button><a href="edit_myprof.html" class="btn">Edit Profile</a></button>
+		</div>
+	</section> -->
+	<!----------------------------------------------------------- JAVASCRIPT ------------------------------>
+	<script>											
+		function openNav() {
+  			document.getElementById("mySidenav").style.width = "250px";	
+		}
+		function closeNav() {
+  			document.getElementById("mySidenav").style.width = "0";
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="shortcut icon" type="image/jpg" href="{% static 'icons/gp2.png' %}">
+	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+	<title>Apply</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/apply.css' %}">
+		<link rel="shortcut icon" type="image/jpg" href="{% static 'gp2.png' %}">
+
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div id="branding">
+			<a href="#"><h1>KJCOEMR GATE PASS</h1></a>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="#">HOME</a></li>
+					<li><a href="#">Hello {{user.first_name}}</a>
+					<ul>
+						<li><a href="#">My Profile</a></li>
+						<li><a href="forget_pass1">Change Password</a></li>
+						<li><a href="logout">Log Out</a></li>
+					</ul>
+					</li>
+				</ul>
+			</nav>
+			
+		</div>
+	</header>
+	
+	<section id="greet">
+		<div class="container">
+			<h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
+	        <h2>Apply for IN-OUT Gate Pass</h2>
+		</div>
+	</section> 
+<form action="" method="post">{%csrf_token%}
+	<section id="check">
+		<div class="container">
+	<label class="radiocontainer">Medical
+	  <input type="radio" checked="checked" name="radio">
+	  	<span class="checkmark"></span>
+	</label>
+	<label class="radiocontainer">Religious
+	  <input type="radio" name="radio">
+	  	<span class="checkmark"></span>
+	</label>
+	<label class="radiocontainer">Others
+	  <input type="radio" name="radio">
+	 	 <span class="checkmark"></span>
+	</label>
+</div>
+</section>
+	<section id="get">
+		<div class="container">
+			
+			
+			 <textarea  class="type1" placeholder="Type your reason..."></textarea>
+			<br>
+			<br>
+			 <input class="click" type="submit" name="" value="Apply">
+		
+		
+		
+		</div>
+	</section>
+</form>
+	<footer>
+<p>KJCOEMR GATE PASS,Copyright &copy;2019</p>
+</footer>
+</body>
+</html>
